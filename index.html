@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UMC | 聯華電子</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <!-- 漢堡選單 -->
+    <button class="hamburger" id="hamburger" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- LOGO -->
+    <div class="nav-logo">
+      <span class="logo-umc">UMC</span>
+      <span class="logo-name" data-zh="聯華電子" data-en="United Microelectronics">聯華電子</span>
+    </div>
+
+    <!-- 右側按鈕 -->
+    <div class="nav-right">
+      <button class="btn-lang" id="langBtn">EN</button>
+      <button class="btn-theme" id="themeBtn">☾</button>
+    </div>
+  </nav>
+
+  <!-- 漢堡側選單 -->
+  <aside class="sidemenu" id="sidemenu">
+    <button class="sidemenu-close" id="sidemenuClose">✕</button>
+    <nav class="sidemenu-nav">
+      <a href="#" class="smlink" data-zh="首頁" data-en="Home">首頁</a>
+      <a href="#" class="smlink" data-zh="公司介紹" data-en="Company Overview">公司介紹</a>
+      <a href="#" class="smlink" data-zh="市場分析" data-en="Market Analysis">市場分析</a>
+      <a href="#" class="smlink" data-zh="資源評價" data-en="Resource Evaluation">資源評價</a>
+      <a href="#" class="smlink" data-zh="成長策略" data-en="Growth Strategy">成長策略</a>
+      <a href="#" class="smlink" data-zh="人力職缺" data-en="Talent & Jobs">人力職缺</a>
+    </nav>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow" data-zh="1142 國際策略管理" data-en="International Strategic Management">1142 國際策略管理</p>
+      <h1 class="hero-title">
+        <span class="ht-umc">UMC</span>
+        <span class="ht-full" data-zh="聯華電子股份有限公司" data-en="United Microelectronics Corp.">聯華電子股份有限公司</span>
+      </h1>
+      <p class="hero-sub" data-zh="互動式學習網頁" data-en="Interactive Learning Webpage">互動式學習網頁</p>
+    </div>
+  </section>
+
+  <!-- ══ CAROUSEL ══ -->
+  <section class="carousel-section">
+    <div class="carousel-track" id="carouselTrack">
+
+      <div class="card" data-index="0">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80')"></div>
+        <div class="card-overlay"></div>
+        <span class="card-label" data-zh="市場分析" data-en="Market Analysis">市場分析</span>
+        <span class="card-brand">UMC</span>
+      </div>
+
+      <div class="card" data-index="1">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80')"></div>
+        <div class="card-overlay"></div>
+        <span class="card-label" data-zh="資源評價" data-en="Resource Evaluation">資源評價</span>
+        <span class="card-brand">UMC</span>
+      </div>
+
+      <div class="card card-center" data-index="2">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80')"></div>
+        <div class="card-overlay"></div>
+        <span class="card-label" data-zh="公司介紹" data-en="Company Overview">公司介紹</span>
+        <span class="card-brand">UMC</span>
+      </div>
+
+      <div class="card" data-index="3">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80')"></div>
+        <div class="card-overlay"></div>
+        <span class="card-label" data-zh="成長策略" data-en="Growth Strategy">成長策略</span>
+        <span class="card-brand">UMC</span>
+      </div>
+
+      <div class="card" data-index="4">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80')"></div>
+        <div class="card-overlay"></div>
+        <span class="card-label" data-zh="人力職缺" data-en="Talent & Jobs">人力職缺</span>
+        <span class="card-brand">UMC</span>
+      </div>
+
+    </div>
+
+    <!-- 左右箭頭 -->
+    <button class="arrow arrow-left" id="arrowLeft">&#8249;</button>
+    <button class="arrow arrow-right" id="arrowRight">&#8250;</button>
+
+    <!-- 指示點 -->
+    <div class="dots" id="dots">
+      <span class="dot active" data-i="0"></span>
+      <span class="dot" data-i="1"></span>
+      <span class="dot" data-i="2"></span>
+      <span class="dot" data-i="3"></span>
+      <span class="dot" data-i="4"></span>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <span data-zh="1142 國際策略管理｜授課教師：梅筱珍" data-en="International Strategic Management｜Prof. Mei Hsiao-Chen">
+      1142 國際策略管理｜授課教師：梅筱珍
+    </span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
