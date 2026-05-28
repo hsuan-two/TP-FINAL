@@ -5,108 +5,494 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UMC | 聯華電子</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
   <!-- ══ NAVBAR ══ -->
   <nav class="navbar">
-    <!-- 漢堡選單 -->
     <button class="hamburger" id="hamburger" aria-label="開啟選單">
       <span></span><span></span><span></span>
     </button>
-
-    <!-- LOGO -->
     <div class="nav-logo">
       <span class="logo-umc">UMC</span>
       <span class="logo-name" data-zh="聯華電子" data-en="United Microelectronics">聯華電子</span>
     </div>
-
-    <!-- 右側按鈕 -->
     <div class="nav-right">
       <button class="btn-lang" id="langBtn">EN</button>
       <button class="btn-theme" id="themeBtn">☾</button>
     </div>
   </nav>
 
-  <!-- 漢堡側選單 -->
+  <!-- ══ SIDE MENU ══ -->
   <aside class="sidemenu" id="sidemenu">
     <button class="sidemenu-close" id="sidemenuClose">✕</button>
     <nav class="sidemenu-nav">
-      <a href="#" class="smlink" data-zh="首頁" data-en="Home">首頁</a>
-      <a href="#" class="smlink" data-zh="公司介紹" data-en="Company Overview">公司介紹</a>
-      <a href="#" class="smlink" data-zh="市場分析" data-en="Market Analysis">市場分析</a>
-      <a href="#" class="smlink" data-zh="資源評價" data-en="Resource Evaluation">資源評價</a>
-      <a href="#" class="smlink" data-zh="成長策略" data-en="Growth Strategy">成長策略</a>
-      <a href="#" class="smlink" data-zh="人力職缺" data-en="Talent & Jobs">人力職缺</a>
+      <a href="#home" class="smlink" data-zh="首頁" data-en="Home">首頁</a>
+
+      <!-- 公司介紹 -->
+      <div class="smgroup">
+        <div class="smgroup-title">
+          <span data-zh="公司介紹" data-en="Company Overview">公司介紹</span>
+          <span class="smgroup-arrow">›</span>
+        </div>
+        <div class="smgroup-children">
+          <a href="#history" class="smlink smlink-child" data-zh="歷史沿革" data-en="History">歷史沿革</a>
+          <a href="#sites"   class="smlink smlink-child" data-zh="服務據點" data-en="Global Sites">服務據點</a>
+          <a href="#org"     class="smlink smlink-child" data-zh="組織架構" data-en="Organization">組織架構</a>
+          <a href="#org"     class="smlink smlink-child" data-zh="財務績效" data-en="Financial Performance">財務績效</a>
+        </div>
+      </div>
+
+      <!-- 市場分析 -->
+      <div class="smgroup">
+        <div class="smgroup-title">
+          <span data-zh="市場分析" data-en="Market Analysis">市場分析</span>
+          <span class="smgroup-arrow">›</span>
+        </div>
+        <div class="smgroup-children">
+          <a href="#market-bmc"      class="smlink smlink-child" data-zh="商業模式九宮格"       data-en="Business Model Canvas">商業模式九宮格</a>
+          <a href="#market-env"      class="smlink smlink-child" data-zh="市場環境與市場分析"   data-en="Market Environment">市場環境與市場分析</a>
+          <a href="#market-strategy" class="smlink smlink-child" data-zh="策略群組－競爭者分析" data-en="Strategic Group Analysis">策略群組－競爭者分析</a>
+          <a href="#market-dynamic"  class="smlink smlink-child" data-zh="動態競爭分析"         data-en="Dynamic Competition">動態競爭分析</a>
+          <a href="#market-pestel"   class="smlink smlink-child" data-zh="PESTEL 與六力分析"    data-en="PESTEL & Six Forces">PESTEL 與六力分析</a>
+        </div>
+      </div>
+
+      <!-- 資源評價 -->
+      <div class="smgroup">
+        <div class="smgroup-title">
+          <span data-zh="資源評價" data-en="Resource Evaluation">資源評價</span>
+          <span class="smgroup-arrow">›</span>
+        </div>
+        <div class="smgroup-children">
+          <a href="#resource-alloc" class="smlink smlink-child" data-zh="資源配置分析"              data-en="Resource Allocation">資源配置分析</a>
+          <a href="#resource-vrin"  class="smlink smlink-child" data-zh="企業活動價值鏈 VRIN 特質" data-en="Value Chain & VRIN">企業活動價值鏈 VRIN 特質</a>
+          <a href="#resource-core"  class="smlink smlink-child" data-zh="核心能耐"                  data-en="Core Competence">核心能耐</a>
+          <a href="#resource-comp"  class="smlink smlink-child" data-zh="互補性資源"                data-en="Complementary Resources">互補性資源</a>
+        </div>
+      </div>
+
+      <!-- 成長策略 -->
+      <div class="smgroup">
+        <div class="smgroup-title">
+          <span data-zh="成長策略" data-en="Growth Strategy">成長策略</span>
+          <span class="smgroup-arrow">›</span>
+        </div>
+        <div class="smgroup-children">
+          <a href="#growth-global"  class="smlink smlink-child" data-zh="跨國產能佈局"   data-en="Global Capacity Layout">跨國產能佈局</a>
+          <a href="#growth-tech"    class="smlink smlink-child" data-zh="次世代技術發展" data-en="Next-Gen Technology">次世代技術發展</a>
+          <a href="#growth-defense" class="smlink smlink-child" data-zh="防禦性長約策略" data-en="Defensive LTA Strategy">防禦性長約策略</a>
+          <a href="#growth-dynamic" class="smlink smlink-child" data-zh="動態能力分析"   data-en="Dynamic Capability">動態能力分析</a>
+        </div>
+      </div>
+
+      <a href="#talent" class="smlink" data-zh="人力職缺" data-en="Talent &amp; Jobs">人力職缺</a>
     </nav>
   </aside>
   <div class="overlay" id="overlay"></div>
 
-  <!-- ══ HERO ══ -->
-  <section class="hero">
+  <!-- ══ HOME ══ -->
+  <section class="hero" id="home">
     <div class="hero-text">
-      <p class="hero-eyebrow" data-zh="1142 國際策略管理" data-en="International Strategic Management">1142 國際策略管理</p>
       <h1 class="hero-title">
         <span class="ht-umc">UMC</span>
         <span class="ht-full" data-zh="聯華電子股份有限公司" data-en="United Microelectronics Corp.">聯華電子股份有限公司</span>
       </h1>
-      <p class="hero-sub" data-zh="互動式學習網頁" data-en="Interactive Learning Webpage">互動式學習網頁</p>
     </div>
   </section>
 
   <!-- ══ CAROUSEL ══ -->
-  <section class="carousel-section">
-    <div class="carousel-track" id="carouselTrack">
-
-      <div class="card" data-index="0">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80')"></div>
-        <div class="card-overlay"></div>
-        <span class="card-label" data-zh="市場分析" data-en="Market Analysis">市場分析</span>
-        <span class="card-brand">UMC</span>
+  <section class="carousel-section" id="carousel">
+    <div class="carousel-viewport">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="card" data-index="0" data-target="market">
+          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80')"></div>
+          <div class="card-overlay"></div>
+          <span class="card-label" data-zh="市場分析" data-en="Market Analysis">市場分析</span>
+          <span class="card-brand">UMC</span>
+        </div>
+        <div class="card" data-index="1" data-target="resource">
+          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80')"></div>
+          <div class="card-overlay"></div>
+          <span class="card-label" data-zh="資源評價" data-en="Resource Evaluation">資源評價</span>
+          <span class="card-brand">UMC</span>
+        </div>
+        <div class="card" data-index="2" data-target="history">
+          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80')"></div>
+          <div class="card-overlay"></div>
+          <span class="card-label" data-zh="公司介紹" data-en="Company Overview">公司介紹</span>
+          <span class="card-brand">UMC</span>
+        </div>
+        <div class="card" data-index="3" data-target="growth">
+          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80')"></div>
+          <div class="card-overlay"></div>
+          <span class="card-label" data-zh="成長策略" data-en="Growth Strategy">成長策略</span>
+          <span class="card-brand">UMC</span>
+        </div>
+        <div class="card" data-index="4" data-target="talent">
+          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80')"></div>
+          <div class="card-overlay"></div>
+          <span class="card-label" data-zh="人力職缺" data-en="Talent &amp; Jobs">人力職缺</span>
+          <span class="card-brand">UMC</span>
+        </div>
       </div>
-
-      <div class="card" data-index="1">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80')"></div>
-        <div class="card-overlay"></div>
-        <span class="card-label" data-zh="資源評價" data-en="Resource Evaluation">資源評價</span>
-        <span class="card-brand">UMC</span>
-      </div>
-
-      <div class="card card-center" data-index="2">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80')"></div>
-        <div class="card-overlay"></div>
-        <span class="card-label" data-zh="公司介紹" data-en="Company Overview">公司介紹</span>
-        <span class="card-brand">UMC</span>
-      </div>
-
-      <div class="card" data-index="3">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80')"></div>
-        <div class="card-overlay"></div>
-        <span class="card-label" data-zh="成長策略" data-en="Growth Strategy">成長策略</span>
-        <span class="card-brand">UMC</span>
-      </div>
-
-      <div class="card" data-index="4">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80')"></div>
-        <div class="card-overlay"></div>
-        <span class="card-label" data-zh="人力職缺" data-en="Talent & Jobs">人力職缺</span>
-        <span class="card-brand">UMC</span>
-      </div>
-
     </div>
-
-    <!-- 左右箭頭 -->
-    <button class="arrow arrow-left" id="arrowLeft">&#8249;</button>
-    <button class="arrow arrow-right" id="arrowRight">&#8250;</button>
-
-    <!-- 指示點 -->
     <div class="dots" id="dots">
-      <span class="dot active" data-i="0"></span>
+      <span class="dot" data-i="0"></span>
       <span class="dot" data-i="1"></span>
       <span class="dot" data-i="2"></span>
       <span class="dot" data-i="3"></span>
       <span class="dot" data-i="4"></span>
     </div>
+  </section>
+
+  <!-- ══ HISTORY ══ -->
+  <section class="section-page" id="history">
+    <div class="section-header">
+      <h2 class="section-title" data-zh="歷史沿革" data-en="Company History">歷史沿革</h2>
+      <p class="section-sub" data-zh="聯華電子發展里程碑" data-en="Key Milestones of UMC">聯華電子發展里程碑</p>
+    </div>
+
+    <div class="timeline-wrap">
+      <svg class="timeline-svg" id="timelineSvg" viewBox="0 0 900 1400" preserveAspectRatio="xMidYMid meet"></svg>
+      <!-- tooltip -->
+      <div class="tl-tooltip" id="tlTooltip">
+        <div class="tl-tooltip-year"></div>
+        <div class="tl-tooltip-text"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SITES ══ -->
+  <section class="section-page" id="sites">
+    <div class="section-header">
+      <h2 class="section-title" data-zh="服務據點" data-en="Global Sites">服務據點</h2>
+      <p class="section-sub" data-zh="聯華電子全球佈局" data-en="UMC Worldwide Presence">聯華電子全球佈局</p>
+    </div>
+    <div class="map-wrap">
+      <div id="worldMap" class="world-map-leaflet"></div>
+      <div class="map-tooltip" id="mapTooltip">
+        <div class="map-tooltip-name"></div>
+        <div class="map-tooltip-text"></div>
+      </div>
+    </div>
+
+    <!-- 圖例 -->
+    <div class="map-legend">
+      <div class="legend-item">
+        <span class="legend-dot legend-dot-fab"></span>
+        <span data-zh="晶圓廠 / 研發中心" data-en="Fab / R&amp;D Center">晶圓廠 / 研發中心</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot legend-dot-office"></span>
+        <span data-zh="辦公據點" data-en="Office">辦公據點</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ORG + FINANCE ══ -->
+  <section class="section-page" id="org">
+
+    <div class="orgfin-wrap">
+
+      <!-- ── 左半：組織架構 ── -->
+      <div class="org-panel">
+        <div class="section-header panel-header">
+          <h2 class="section-title" data-zh="組織架構" data-en="Organization">組織架構</h2>
+          <p class="section-sub" data-zh="聯華電子治理結構" data-en="UMC Governance Structure">聯華電子治理結構</p>
+        </div>
+        <div class="org-spacer"></div>
+        <div class="org-top-row">
+          <button class="org-btn active" data-key="gov"  data-zh="治理層"   data-en="Governance">治理層</button>
+          <button class="org-btn"        data-key="mgmt" data-zh="經營層"   data-en="Management">經營層</button>
+          <button class="org-btn"        data-key="func" data-zh="功能部門" data-en="Functions">功能部門</button>
+        </div>
+        <div class="org-connector"><div class="org-line-v"></div></div>
+        <div class="org-desc-box" id="orgDescBox">
+          <p class="org-desc-text" id="orgDescText"></p>
+        </div>
+      </div>
+
+      <!-- ── 右半：財務績效 ── -->
+      <div class="fin-panel">
+        <div class="section-header panel-header">
+          <h2 class="section-title" data-zh="財務績效" data-en="Financial Performance">財務績效</h2>
+          <p class="section-sub" data-zh="核心財務指標" data-en="Key Financial Metrics">核心財務指標</p>
+        </div>
+
+        <div class="fin-inner">
+          <!-- KPI 四格 -->
+          <div class="kpi-col">
+            <div class="kpi-card">
+              <span class="kpi-label" data-zh="2024年總營收" data-en="2024 Revenue">2024年總營收</span>
+              <span class="kpi-value">2323<span class="kpi-unit" data-zh="億元" data-en="B NTD">億元</span></span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label" data-zh="2025年總營收" data-en="2025 Revenue">2025年總營收</span>
+              <span class="kpi-value">2375<span class="kpi-unit" data-zh="億元" data-en="B NTD">億元</span></span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label" data-zh="毛利率" data-en="Gross Margin">毛利率</span>
+              <span class="kpi-value">29%<span class="kpi-unit">+</span></span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label" data-zh="淨利率" data-en="Net Margin">淨利率</span>
+              <span class="kpi-value">18.5%</span>
+            </div>
+          </div>
+
+          <!-- 製程條形圖 -->
+          <div class="process-col">
+            <h4 class="process-title" data-zh="製程別營收佔比" data-en="Revenue by Process Node">製程別營收佔比</h4>
+            <div class="process-bars">
+              <div class="process-row">
+                <span class="process-label">22/28nm</span>
+                <div class="process-bar-track">
+                  <div class="process-bar-fill" data-pct="37"></div>
+                </div>
+                <span class="process-pct">37%</span>
+              </div>
+              <div class="process-row">
+                <span class="process-label">65nm</span>
+                <div class="process-bar-track">
+                  <div class="process-bar-fill" data-pct="17"></div>
+                </div>
+                <span class="process-pct">17%</span>
+              </div>
+              <div class="process-row">
+                <span class="process-label">40nm</span>
+                <div class="process-bar-track">
+                  <div class="process-bar-fill" data-pct="16"></div>
+                </div>
+                <span class="process-pct">16%</span>
+              </div>
+            </div>
+
+            <!-- 財務亮點 -->
+            <div class="fin-highlights">
+              <h4 class="highlights-title" data-zh="財務與經營亮點" data-en="Financial &amp; Operational Highlights">財務與經營亮點</h4>
+              <ul class="highlights-list">
+                <li class="highlight-item">
+                  <span class="hl-icon">✔</span>
+                  <div>
+                    <strong data-zh="穩健的 EPS 指標：" data-en="Solid EPS:">穩健的 EPS 指標：</strong>
+                    <span data-zh="2025 年基本每股盈餘達到 3.34 元，產能利用率維持在健康的 78% 左右。" data-en="Basic EPS reached NTD 3.34 in 2025, with capacity utilization maintained at a healthy ~78%.">2025 年基本每股盈餘達到 3.34 元，產能利用率維持在健康的 78% 左右。</span>
+                  </div>
+                </li>
+                <li class="highlight-item">
+                  <span class="hl-icon">✔</span>
+                  <div>
+                    <strong data-zh="輕資產避免資本重擔：" data-en="Asset-light strategy:">輕資產避免資本重擔：</strong>
+                    <span data-zh="與 Intel 合作 12nm 成功避開了上百億美元的建廠開銷。" data-en="The 12nm collaboration with Intel successfully avoided tens of billions in fab construction costs.">與 Intel 合作 12nm 成功避開了上百億美元的建廠開銷。</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /fin-inner -->
+      </div><!-- /fin-panel -->
+
+    </div><!-- /orgfin-wrap -->
+  </section>
+
+  <!-- ══ MARKET ANALYSIS ══ -->
+  <section class="section-page market-hero-section" id="market">
+    <div class="market-hero-content">
+      <p class="market-eyebrow" data-zh="市場分析" data-en="Market Analysis">市場分析</p>
+      <h2 class="market-hero-title" data-zh="透析聯電如何藉由成熟製程的獨特地位，在激烈的全球代工競爭中另闢藍海。" data-en="Analyzing how UMC leverages its unique position in mature-node processes to carve out a blue ocean amid fierce global foundry competition.">透析聯電如何藉由成熟製程的獨特地位，在激烈的全球代工競爭中另闢藍海。</h2>
+    </div>
+  </section>
+
+  <!-- ══ MARKET ENV PAGE ══ -->
+  <section class="section-page" id="market-env">
+    <div class="menv-wrap">
+
+      <!-- ── 左半 ── -->
+      <div class="menv-left">
+
+        <!-- 產品生命週期長條 -->
+        <div class="plc-bar">
+          <div class="plc-stage plc-intro">
+            <span data-zh="導入期" data-en="Introduction">導入期</span>
+          </div>
+          <div class="plc-stage plc-growth">
+            <span data-zh="成長期" data-en="Growth">成長期</span>
+          </div>
+          <div class="plc-stage plc-mature">
+            <span data-zh="成熟期" data-en="Maturity">成熟期</span>
+            <span class="plc-marker" title="UMC 目前位置">▼</span>
+          </div>
+          <div class="plc-stage plc-decline">
+            <span data-zh="衰退期" data-en="Decline">衰退期</span>
+          </div>
+        </div>
+
+        <!-- 三個說明區塊 -->
+        <div class="menv-cards">
+
+          <div class="menv-card">
+            <div class="menv-card-icon">📊</div>
+            <div class="menv-card-body">
+              <h4 class="menv-card-title" data-zh="市場特性" data-en="Market Characteristics">市場特性</h4>
+              <p class="menv-card-text" data-zh="製程技術完全成熟，標準化程度高，良率已達到極致穩定，是電子終端產品中用量最廣泛的基石。" data-en="Process technology is fully mature with high standardization and peak yield stability — the most widely used foundation in electronic end products.">製程技術完全成熟，標準化程度高，良率已達到極致穩定，是電子終端產品中用量最廣泛的基石。</p>
+            </div>
+          </div>
+
+          <div class="menv-card">
+            <div class="menv-card-icon">💰</div>
+            <div class="menv-card-body">
+              <h4 class="menv-card-title" data-zh="成本與折舊" data-en="Cost & Depreciation">成本與折舊</h4>
+              <p class="menv-card-text" data-zh="早期成熟製程設備大多已折舊完畢，能以極低邊際成本生產，建立極強的價格防線。" data-en="Most legacy mature-node equipment is fully depreciated, enabling production at minimal marginal cost and building a powerful price defense.">早期成熟製程設備大多已折舊完畢，能以極低邊際成本生產，建立極強的價格防線。</p>
+            </div>
+          </div>
+
+          <div class="menv-card">
+            <div class="menv-card-icon">🔄</div>
+            <div class="menv-card-body">
+              <h4 class="menv-card-title" data-zh="替代性威脅" data-en="Substitution Threat">替代性威脅</h4>
+              <p class="menv-card-text" data-zh="尖端手機雖主打 3nm，但所需的電源管理、射頻晶片等仍高度依賴 28nm 等成熟工藝。" data-en="Even cutting-edge smartphones running 3nm chips still heavily rely on 28nm mature nodes for power management and RF chips.">尖端手機雖主打 3nm，但所需的電源管理、射頻晶片等仍高度依賴 28nm 等成熟工藝。</p>
+            </div>
+          </div>
+
+        </div><!-- /menv-cards -->
+      </div><!-- /menv-left -->
+
+      <!-- ── 右半 ── -->
+      <div class="menv-right">
+
+        <h3 class="menv-right-title" data-zh="產業環境與市場趨勢" data-en="Industry Environment &amp; Market Trends">產業環境與市場趨勢</h3>
+
+        <p class="menv-right-lead" data-zh="隨著 5G、AI 及車用電子的普及，聯電將技術焦點緊抓通訊及高速運算領域的爆發性成長：" data-en="As 5G, AI, and automotive electronics proliferate, UMC keeps its technical focus on the explosive growth in communications and high-speed computing:">隨著 5G、AI 及車用電子的普及，聯電將技術焦點緊抓通訊及高速運算領域的爆發性成長：</p>
+
+        <div class="menv-trend-list">
+
+          <div class="menv-trend-item">
+            <div class="menv-trend-dot"></div>
+            <div class="menv-trend-body">
+              <h4 class="menv-trend-title" data-zh="5G / Wi-Fi 升級" data-en="5G / Wi-Fi Upgrade">5G / Wi-Fi 升級</h4>
+              <p class="menv-trend-text" data-zh="需將 Wi-Fi MAC、基頻及 RFFE（射頻前端）高度整合。" data-en="Requires highly integrated Wi-Fi MAC, baseband, and RFFE (Radio Frequency Front-End) solutions.">需將 Wi-Fi MAC、基頻及 RFFE（射頻前端）高度整合。</p>
+            </div>
+          </div>
+
+          <div class="menv-trend-item">
+            <div class="menv-trend-dot"></div>
+            <div class="menv-trend-body">
+              <h4 class="menv-trend-title" data-zh="AI 伺服器與矽光子 (CPO)" data-en="AI Servers &amp; Silicon Photonics (CPO)">AI 伺服器與矽光子 (CPO)</h4>
+              <p class="menv-trend-text" data-zh="聯電取得 imec 授權，推出 12 吋矽光子平台。" data-en="UMC obtained imec licensing and launched a 12-inch silicon photonics platform.">聯電取得 imec 授權，推出 12 吋矽光子平台。</p>
+            </div>
+          </div>
+
+        </div><!-- /menv-trend-list -->
+      </div><!-- /menv-right -->
+
+    </div><!-- /menv-wrap -->
+  </section>
+
+  <!-- ══ BMC ══ -->
+  <section class="section-page bmc-section" id="market-bmc">
+    <div class="section-header">
+      <h2 class="section-title" data-zh="商業模式九宮格" data-en="Business Model Canvas">商業模式九宮格</h2>
+      <p class="section-sub" data-zh="UMC 商業模式核心架構" data-en="UMC Core Business Model Framework">UMC 商業模式核心架構</p>
+    </div>
+
+    <!-- 標準 BMC Grid -->
+    <div class="bmc-grid">
+
+      <!-- Row 1: 關鍵夥伴 | 關鍵活動 | 價值主張 | 顧客關係 | 客戶區隔 -->
+      <div class="bmc-card" data-row="1" data-col="1" style="grid-area:partner">
+        <div class="bmc-front">
+          <span class="bmc-icon">🤝</span>
+          <h4 class="bmc-title" data-zh="關鍵夥伴" data-en="Key Partners">關鍵夥伴</h4>
+          <div class="bmc-divider"></div>
+          <p class="bmc-summary" data-zh="設備供應商、材料廠、IC 設計公司" data-en="Equipment suppliers, material vendors, IC design houses">設備供應商、材料廠、IC 設計公司</p>
+        </div>
+        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
+      </div>
+
+      <div class="bmc-card bmc-card-split-top" data-row="1" data-col="2" style="grid-area:activity">
+        <div class="bmc-front">
+          <span class="bmc-icon">⚙️</span>
+          <h4 class="bmc-title" data-zh="關鍵活動" data-en="Key Activities">關鍵活動</h4>
+          <div class="bmc-divider"></div>
+          <p class="bmc-summary" data-zh="晶圓製造、製程研發、品質管控" data-en="Wafer manufacturing, process R&D, quality control">晶圓製造、製程研發、品質管控</p>
+        </div>
+        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
+      </div>
+
+      <div class="bmc-card bmc-card-value" style="grid-area:value">
+        <div class="bmc-front">
+          <span class="bmc-icon">💎</span>
+          <h4 class="bmc-title" data-zh="價值主張" data-en="Value Proposition">價值主張</h4>
+          <div class="bmc-divider"></div>
+          <p class="bmc-summary" data-zh="穩定產能、成熟製程、成本效率" data-en="Stable capacity, mature process, cost efficiency">穩定產能、成熟製程、成本效率</p>
+        </div>
+        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
+      </div>
+
+      <div class="bmc-card bmc-card-split-top" style="grid-area:relation">
+        <div class="bmc-front">
+          <span class="bmc-icon">🤜</span>
+          <h4 class="bmc-title" data-zh="顧客關係" data-en="Customer Relationships">顧客關係</h4>
+          <div class="bmc-divider"></div>
+          <p class="bmc-summary" data-zh="長期合作、專案協作、技術服務" data-en="Long-term partnerships, project collaboration, technical service">長期合作、專案協作、技術服務</p>
+        </div>
+        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
+      </div>
+
+      <div class="bmc-card" style="grid-area:segment">
+        <div class="bmc-front">
+          <span class="bmc-icon">👥</span>
+          <h4 class="bmc-title" data-zh="客戶區隔" data-en="Customer Segments">客戶區隔</h4>
+          <div class="bmc-divider"></div>
+          <p class="bmc-summary" data-zh="晶圓代工客戶、IC 設計公司、系統廠" data-en="Foundry customers, IC design houses, system vendors">晶圓代工客戶、IC 設計公司、系統廠</p>
+        </div>
+        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
+      </div>
+
+      <!-- Row 2: (partner continues) | 關鍵資源 | (value continues) | 通路 | (segment continues) -->
+      <div class="bmc-card bmc-card-split-bot" style="grid-area:resource">
+        <div class="bmc-front">
+          <span class="bmc-icon">🏭</span>
+          <h4 class="bmc-title" data-zh="關鍵資源" data-en="Key Resources">關鍵資源</h4>
+          <div class="bmc-divider"></div>
+          <p class="bmc-summary" data-zh="晶圓廠產能、製程技術、工程人才" data-en="Fab capacity, process technology, engineering talent">晶圓廠產能、製程技術、工程人才</p>
+        </div>
+        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
+      </div>
+
+      <div class="bmc-card bmc-card-split-bot" style="grid-area:channel">
+        <div class="bmc-front">
+          <span class="bmc-icon">🌐</span>
+          <h4 class="bmc-title" data-zh="通路關係" data-en="Channels">通路關係</h4>
+          <div class="bmc-divider"></div>
+          <p class="bmc-summary" data-zh="全球辦公據點、業務團隊、技術支援" data-en="Global offices, sales teams, technical support">全球辦公據點、業務團隊、技術支援</p>
+        </div>
+        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
+      </div>
+
+      <!-- Row 3: 成本結構 | 收益流 -->
+      <div class="bmc-card bmc-card-wide" style="grid-area:cost">
+        <div class="bmc-front">
+          <span class="bmc-icon">📉</span>
+          <h4 class="bmc-title" data-zh="成本結構" data-en="Cost Structure">成本結構</h4>
+          <div class="bmc-divider"></div>
+          <p class="bmc-summary" data-zh="設備折舊、廠房投資、研發費用" data-en="Equipment depreciation, facility investment, R&D expenses">設備折舊、廠房投資、研發費用</p>
+        </div>
+        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
+      </div>
+
+      <div class="bmc-card bmc-card-wide" style="grid-area:revenue">
+        <div class="bmc-front">
+          <span class="bmc-icon">📈</span>
+          <h4 class="bmc-title" data-zh="收益流" data-en="Revenue Streams">收益流</h4>
+          <div class="bmc-divider"></div>
+          <p class="bmc-summary" data-zh="晶圓代工收入、技術服務收入、合作案收入" data-en="Foundry revenue, technical service revenue, collaboration income">晶圓代工收入、技術服務收入、合作案收入</p>
+        </div>
+        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
+      </div>
+
+    </div><!-- /bmc-grid -->
   </section>
 
   <!-- ══ FOOTER ══ -->
@@ -116,6 +502,7 @@
     </span>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
