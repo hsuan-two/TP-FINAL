@@ -52,7 +52,6 @@
         </div>
         <div class="smgroup-children">
           <a href="#market-bmc"      class="smlink smlink-child" data-zh="商業模式九宮格"       data-en="Business Model Canvas">商業模式九宮格</a>
-          <a href="#market-env"      class="smlink smlink-child" data-zh="市場環境與市場分析"   data-en="Market Environment">市場環境與市場分析</a>
           <a href="#market-strategy" class="smlink smlink-child" data-zh="策略群組－競爭者分析" data-en="Strategic Group Analysis">策略群組－競爭者分析</a>
           <a href="#market-dynamic"  class="smlink smlink-child" data-zh="動態競爭分析"         data-en="Dynamic Competition">動態競爭分析</a>
           <a href="#market-pestel"   class="smlink smlink-child" data-zh="PESTEL 與六力分析"    data-en="PESTEL & Six Forces">PESTEL 與六力分析</a>
@@ -106,16 +105,16 @@
   <section class="carousel-section" id="carousel">
     <div class="carousel-viewport">
       <div class="carousel-track" id="carouselTrack">
-        <div class="card" data-index="0" data-target="market">
-          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80')"></div>
+        <div class="card" data-index="0" data-target="growth">
+          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80')"></div>
           <div class="card-overlay"></div>
-          <span class="card-label" data-zh="市場分析" data-en="Market Analysis">市場分析</span>
+          <span class="card-label" data-zh="成長策略" data-en="Growth Strategy">成長策略</span>
           <span class="card-brand">UMC</span>
         </div>
-        <div class="card" data-index="1" data-target="resource">
-          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80')"></div>
+        <div class="card" data-index="1" data-target="talent">
+          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80')"></div>
           <div class="card-overlay"></div>
-          <span class="card-label" data-zh="資源評價" data-en="Resource Evaluation">資源評價</span>
+          <span class="card-label" data-zh="人力職缺" data-en="Talent &amp; Jobs">人力職缺</span>
           <span class="card-brand">UMC</span>
         </div>
         <div class="card" data-index="2" data-target="history">
@@ -124,16 +123,16 @@
           <span class="card-label" data-zh="公司介紹" data-en="Company Overview">公司介紹</span>
           <span class="card-brand">UMC</span>
         </div>
-        <div class="card" data-index="3" data-target="growth">
-          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80')"></div>
+        <div class="card" data-index="3" data-target="market">
+          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80')"></div>
           <div class="card-overlay"></div>
-          <span class="card-label" data-zh="成長策略" data-en="Growth Strategy">成長策略</span>
+          <span class="card-label" data-zh="市場分析" data-en="Market Analysis">市場分析</span>
           <span class="card-brand">UMC</span>
         </div>
-        <div class="card" data-index="4" data-target="talent">
-          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80')"></div>
+        <div class="card" data-index="4" data-target="resource">
+          <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80')"></div>
           <div class="card-overlay"></div>
-          <span class="card-label" data-zh="人力職缺" data-en="Talent &amp; Jobs">人力職缺</span>
+          <span class="card-label" data-zh="資源評價" data-en="Resource Evaluation">資源評價</span>
           <span class="card-brand">UMC</span>
         </div>
       </div>
@@ -202,8 +201,8 @@
           <h2 class="section-title" data-zh="組織架構" data-en="Organization">組織架構</h2>
           <p class="section-sub" data-zh="聯華電子治理結構" data-en="UMC Governance Structure">聯華電子治理結構</p>
         </div>
-        <div class="org-spacer"></div>
-        <div class="org-top-row">
+        <div class="org-content-wrap">
+          <div class="org-top-row">
           <button class="org-btn active" data-key="gov"  data-zh="治理層"   data-en="Governance">治理層</button>
           <button class="org-btn"        data-key="mgmt" data-zh="經營層"   data-en="Management">經營層</button>
           <button class="org-btn"        data-key="func" data-zh="功能部門" data-en="Functions">功能部門</button>
@@ -212,6 +211,7 @@
         <div class="org-desc-box" id="orgDescBox">
           <p class="org-desc-text" id="orgDescText"></p>
         </div>
+        </div><!-- /org-content-wrap -->
       </div>
 
       <!-- ── 右半：財務績效 ── -->
@@ -299,8 +299,8 @@
   <!-- ══ MARKET ANALYSIS ══ -->
   <section class="section-page market-hero-section" id="market">
     <div class="market-hero-content">
-      <p class="market-eyebrow" data-zh="市場分析" data-en="Market Analysis">市場分析</p>
-      <h2 class="market-hero-title" data-zh="透析聯電如何藉由成熟製程的獨特地位，在激烈的全球代工競爭中另闢藍海。" data-en="Analyzing how UMC leverages its unique position in mature-node processes to carve out a blue ocean amid fierce global foundry competition.">透析聯電如何藉由成熟製程的獨特地位，在激烈的全球代工競爭中另闢藍海。</h2>
+      <h2 class="market-main-title" data-zh="市場分析" data-en="Market Analysis">市場分析</h2>
+      <p class="market-hero-sub" data-zh="透析聯電如何藉由成熟製程的獨特地位，在激烈的全球代工競爭中另闢藍海。" data-en="Analyzing how UMC leverages its unique position in mature-node processes to carve out a blue ocean amid fierce global foundry competition.">透析聯電如何藉由成熟製程的獨特地位，在激烈的全球代工競爭中另闢藍海。</p>
     </div>
   </section>
 
@@ -332,7 +332,7 @@
         <div class="menv-cards">
 
           <div class="menv-card">
-            <div class="menv-card-icon">📊</div>
+            <div class="menv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0b2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 16V11M12 16V8M16 16v-4"/></svg></div>
             <div class="menv-card-body">
               <h4 class="menv-card-title" data-zh="市場特性" data-en="Market Characteristics">市場特性</h4>
               <p class="menv-card-text" data-zh="製程技術完全成熟，標準化程度高，良率已達到極致穩定，是電子終端產品中用量最廣泛的基石。" data-en="Process technology is fully mature with high standardization and peak yield stability — the most widely used foundation in electronic end products.">製程技術完全成熟，標準化程度高，良率已達到極致穩定，是電子終端產品中用量最廣泛的基石。</p>
@@ -340,7 +340,7 @@
           </div>
 
           <div class="menv-card">
-            <div class="menv-card-icon">💰</div>
+            <div class="menv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0b2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v1m0 8v1M9.5 9.5A2.5 2.5 0 0 1 12 8c1.38 0 2.5.9 2.5 2s-1.12 2-2.5 2-2.5.9-2.5 2 1.12 2 2.5 2a2.5 2.5 0 0 0 2.5-1.5"/></svg></div>
             <div class="menv-card-body">
               <h4 class="menv-card-title" data-zh="成本與折舊" data-en="Cost & Depreciation">成本與折舊</h4>
               <p class="menv-card-text" data-zh="早期成熟製程設備大多已折舊完畢，能以極低邊際成本生產，建立極強的價格防線。" data-en="Most legacy mature-node equipment is fully depreciated, enabling production at minimal marginal cost and building a powerful price defense.">早期成熟製程設備大多已折舊完畢，能以極低邊際成本生產，建立極強的價格防線。</p>
@@ -348,7 +348,7 @@
           </div>
 
           <div class="menv-card">
-            <div class="menv-card-icon">🔄</div>
+            <div class="menv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0b2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M21 3v5h-5M3 21v-5h5"/></svg></div>
             <div class="menv-card-body">
               <h4 class="menv-card-title" data-zh="替代性威脅" data-en="Substitution Threat">替代性威脅</h4>
               <p class="menv-card-text" data-zh="尖端手機雖主打 3nm，但所需的電源管理、射頻晶片等仍高度依賴 28nm 等成熟工藝。" data-en="Even cutting-edge smartphones running 3nm chips still heavily rely on 28nm mature nodes for power management and RF chips.">尖端手機雖主打 3nm，但所需的電源管理、射頻晶片等仍高度依賴 28nm 等成熟工藝。</p>
@@ -393,103 +393,134 @@
   <section class="section-page bmc-section" id="market-bmc">
     <div class="section-header">
       <h2 class="section-title" data-zh="商業模式九宮格" data-en="Business Model Canvas">商業模式九宮格</h2>
-      <p class="section-sub" data-zh="UMC 商業模式核心架構" data-en="UMC Core Business Model Framework">UMC 商業模式核心架構</p>
+      <p class="section-sub" data-zh="點擊每格翻轉查看詳細內容" data-en="Click each block to flip for details">點擊每格翻轉查看詳細內容</p>
     </div>
-
-    <!-- 標準 BMC Grid -->
     <div class="bmc-grid">
 
-      <!-- Row 1: 關鍵夥伴 | 關鍵活動 | 價值主張 | 顧客關係 | 客戶區隔 -->
-      <div class="bmc-card" data-row="1" data-col="1" style="grid-area:partner">
-        <div class="bmc-front">
-          <span class="bmc-icon">🤝</span>
-          <h4 class="bmc-title" data-zh="關鍵夥伴" data-en="Key Partners">關鍵夥伴</h4>
-          <div class="bmc-divider"></div>
-          <p class="bmc-summary" data-zh="設備供應商、材料廠、IC 設計公司" data-en="Equipment suppliers, material vendors, IC design houses">設備供應商、材料廠、IC 設計公司</p>
+      <!-- 關鍵夥伴 row 1~2 col 1 -->
+      <div class="bmc-cell" style="grid-area:partner">
+        <div class="bmc-inner">
+          <div class="bmc-front">
+            <h4 class="bmc-title" data-zh="關鍵夥伴" data-en="Key Partners">關鍵夥伴</h4>
+            <p class="bmc-sum" data-zh="設備供應商、材料廠、IC 設計公司" data-en="Equipment suppliers, material vendors, IC design houses">設備供應商、材料廠、IC 設計公司</p>
+          </div>
+          <div class="bmc-back">
+            <h4 class="bmc-back-title" data-zh="關鍵夥伴" data-en="Key Partners">關鍵夥伴</h4>
+            <p class="bmc-back-text" data-zh="聯電的關鍵夥伴包含半導體設備供應商、材料供應商，以及與其合作的 IC 設計公司。晶圓代工不是單靠一家企業就能完成，而是需要上下游夥伴共同支撐，才能確保生產順利、技術更新與供應穩定。" data-en="UMC's key partners include semiconductor equipment suppliers, material suppliers, and collaborating IC design houses. Wafer foundry cannot be achieved by a single company — it requires upstream and downstream partners to ensure smooth production, technology updates, and supply stability.">聯電的關鍵夥伴包含半導體設備供應商、材料供應商，以及與其合作的 IC 設計公司。晶圓代工不是單靠一家企業就能完成，而是需要上下游夥伴共同支撐，才能確保生產順利、技術更新與供應穩定。</p>
+          </div>
         </div>
-        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
       </div>
 
-      <div class="bmc-card bmc-card-split-top" data-row="1" data-col="2" style="grid-area:activity">
-        <div class="bmc-front">
-          <span class="bmc-icon">⚙️</span>
-          <h4 class="bmc-title" data-zh="關鍵活動" data-en="Key Activities">關鍵活動</h4>
-          <div class="bmc-divider"></div>
-          <p class="bmc-summary" data-zh="晶圓製造、製程研發、品質管控" data-en="Wafer manufacturing, process R&D, quality control">晶圓製造、製程研發、品質管控</p>
+      <!-- 關鍵活動 row 1 col 2 -->
+      <div class="bmc-cell" style="grid-area:activity">
+        <div class="bmc-inner">
+          <div class="bmc-front">
+            <h4 class="bmc-title" data-zh="關鍵活動" data-en="Key Activities">關鍵活動</h4>
+            <p class="bmc-sum" data-zh="晶圓製造、製程研發、品質管控" data-en="Wafer manufacturing, process R&D, quality control">晶圓製造、製程研發、品質管控</p>
+          </div>
+          <div class="bmc-back">
+            <h4 class="bmc-back-title" data-zh="關鍵活動" data-en="Key Activities">關鍵活動</h4>
+            <p class="bmc-back-text" data-zh="聯電的核心活動包括晶圓製造、製程研發、品質管控與客戶技術支援。這些活動共同決定了產品是否能穩定量產、良率是否夠高，以及是否能符合客戶對性能與交期的要求。" data-en="UMC's core activities include wafer manufacturing, process R&D, quality control, and customer technical support. These activities collectively determine whether products can be stably mass-produced, yield is high enough, and customer requirements for performance and delivery are met.">聯電的核心活動包括晶圓製造、製程研發、品質管控與客戶技術支援。這些活動共同決定了產品是否能穩定量產、良率是否夠高，以及是否能符合客戶對性能與交期的要求。</p>
+          </div>
         </div>
-        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
       </div>
 
-      <div class="bmc-card bmc-card-value" style="grid-area:value">
-        <div class="bmc-front">
-          <span class="bmc-icon">💎</span>
-          <h4 class="bmc-title" data-zh="價值主張" data-en="Value Proposition">價值主張</h4>
-          <div class="bmc-divider"></div>
-          <p class="bmc-summary" data-zh="穩定產能、成熟製程、成本效率" data-en="Stable capacity, mature process, cost efficiency">穩定產能、成熟製程、成本效率</p>
+      <!-- 價值主張 row 1~2 col 3 -->
+      <div class="bmc-cell" style="grid-area:value">
+        <div class="bmc-inner">
+          <div class="bmc-front">
+            <h4 class="bmc-title" data-zh="價值主張" data-en="Value Proposition">價值主張</h4>
+            <p class="bmc-sum" data-zh="穩定產能、成熟製程、成本效率" data-en="Stable capacity, mature process, cost efficiency">穩定產能、成熟製程、成本效率</p>
+          </div>
+          <div class="bmc-back">
+            <h4 class="bmc-back-title" data-zh="價值主張" data-en="Value Proposition">價值主張</h4>
+            <p class="bmc-back-text" data-zh="聯電提供的是穩定、可靠且具成本效益的晶圓代工服務，尤其在成熟製程領域具有重要地位。對客戶來說，聯電的價值不只是「幫忙製造」，而是能協助他們把設計快速轉為可量產產品，並在供應穩定性與技術支援上提供保障。" data-en="UMC provides stable, reliable, and cost-effective wafer foundry services, especially in the mature process segment. For customers, UMC's value is not just 'manufacturing help' but enabling rapid conversion from design to mass-producible products with supply stability and technical support guarantees.">聯電提供的是穩定、可靠且具成本效益的晶圓代工服務，尤其在成熟製程領域具有重要地位。對客戶來說，聯電的價值不只是「幫忙製造」，而是能協助他們把設計快速轉為可量產產品，並在供應穩定性與技術支援上提供保障。</p>
+          </div>
         </div>
-        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
       </div>
 
-      <div class="bmc-card bmc-card-split-top" style="grid-area:relation">
-        <div class="bmc-front">
-          <span class="bmc-icon">🤜</span>
-          <h4 class="bmc-title" data-zh="顧客關係" data-en="Customer Relationships">顧客關係</h4>
-          <div class="bmc-divider"></div>
-          <p class="bmc-summary" data-zh="長期合作、專案協作、技術服務" data-en="Long-term partnerships, project collaboration, technical service">長期合作、專案協作、技術服務</p>
+      <!-- 顧客關係 row 1 col 4 -->
+      <div class="bmc-cell" style="grid-area:relation">
+        <div class="bmc-inner">
+          <div class="bmc-front">
+            <h4 class="bmc-title" data-zh="顧客關係" data-en="Customer Relationships">顧客關係</h4>
+            <p class="bmc-sum" data-zh="長期合作、專案協作、技術服務" data-en="Long-term partnerships, project collaboration, technical service">長期合作、專案協作、技術服務</p>
+          </div>
+          <div class="bmc-back">
+            <h4 class="bmc-back-title" data-zh="顧客關係" data-en="Customer Relationships">顧客關係</h4>
+            <p class="bmc-back-text" data-zh="聯電與客戶之間通常不是一次性交易，而是建立在長期合作與專案協作的基礎上。由於晶圓代工牽涉到製程調整、良率優化與供應鏈配合，聯電必須透過技術服務與持續溝通，和客戶維持穩定而緊密的合作關係。" data-en="UMC's relationships with customers are typically not one-time transactions but built on long-term cooperation and project collaboration. Since wafer foundry involves process adjustments, yield optimization, and supply chain coordination, UMC must maintain stable and close relationships through technical services and continuous communication.">聯電與客戶之間通常不是一次性交易，而是建立在長期合作與專案協作的基礎上。由於晶圓代工牽涉到製程調整、良率優化與供應鏈配合，聯電必須透過技術服務與持續溝通，和客戶維持穩定而緊密的合作關係。</p>
+          </div>
         </div>
-        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
       </div>
 
-      <div class="bmc-card" style="grid-area:segment">
-        <div class="bmc-front">
-          <span class="bmc-icon">👥</span>
-          <h4 class="bmc-title" data-zh="客戶區隔" data-en="Customer Segments">客戶區隔</h4>
-          <div class="bmc-divider"></div>
-          <p class="bmc-summary" data-zh="晶圓代工客戶、IC 設計公司、系統廠" data-en="Foundry customers, IC design houses, system vendors">晶圓代工客戶、IC 設計公司、系統廠</p>
+      <!-- 客戶區隔 row 1~2 col 5 -->
+      <div class="bmc-cell" style="grid-area:segment">
+        <div class="bmc-inner">
+          <div class="bmc-front">
+            <h4 class="bmc-title" data-zh="客戶區隔" data-en="Customer Segments">客戶區隔</h4>
+            <p class="bmc-sum" data-zh="IC 設計公司、系統廠、半導體品牌客戶" data-en="IC design houses, system vendors, semiconductor brands">IC 設計公司、系統廠、半導體品牌客戶</p>
+          </div>
+          <div class="bmc-back">
+            <h4 class="bmc-back-title" data-zh="客戶區隔" data-en="Customer Segments">客戶區隔</h4>
+            <p class="bmc-back-text" data-zh="聯電的主要客戶是需要委外製造晶片的 IC 設計公司、系統廠與半導體品牌客戶。這些客戶通常不自行建廠，而是把產品交由聯電代工生產，因此聯電的商業模式本質上是 B2B 服務，重點在於滿足不同客戶對製程、成本與交期的需求。" data-en="UMC's main customers are IC design houses, system vendors, and semiconductor brand customers who need outsourced chip manufacturing. These customers typically don't build their own fabs, instead entrusting production to UMC, making UMC's business model essentially a B2B service focused on meeting diverse customer needs for process, cost, and delivery.">聯電的主要客戶是需要委外製造晶片的 IC 設計公司、系統廠與半導體品牌客戶。這些客戶通常不自行建廠，而是把產品交由聯電代工生產，因此聯電的商業模式本質上是 B2B 服務，重點在於滿足不同客戶對製程、成本與交期的需求。</p>
+          </div>
         </div>
-        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
       </div>
 
-      <!-- Row 2: (partner continues) | 關鍵資源 | (value continues) | 通路 | (segment continues) -->
-      <div class="bmc-card bmc-card-split-bot" style="grid-area:resource">
-        <div class="bmc-front">
-          <span class="bmc-icon">🏭</span>
-          <h4 class="bmc-title" data-zh="關鍵資源" data-en="Key Resources">關鍵資源</h4>
-          <div class="bmc-divider"></div>
-          <p class="bmc-summary" data-zh="晶圓廠產能、製程技術、工程人才" data-en="Fab capacity, process technology, engineering talent">晶圓廠產能、製程技術、工程人才</p>
+      <!-- 關鍵資源 row 2 col 2 -->
+      <div class="bmc-cell" style="grid-area:resource">
+        <div class="bmc-inner">
+          <div class="bmc-front">
+            <h4 class="bmc-title" data-zh="關鍵資源" data-en="Key Resources">關鍵資源</h4>
+            <p class="bmc-sum" data-zh="晶圓廠產能、製程技術、工程人才" data-en="Fab capacity, process technology, engineering talent">晶圓廠產能、製程技術、工程人才</p>
+          </div>
+          <div class="bmc-back">
+            <h4 class="bmc-back-title" data-zh="關鍵資源" data-en="Key Resources">關鍵資源</h4>
+            <p class="bmc-back-text" data-zh="聯電最重要的資源是晶圓廠產能、製程技術與專業工程人才。晶圓代工產業高度依賴設備與技術，因此聯電是否能持續維持良率、提升製程能力，直接影響它在市場上的競爭力與接單能力。" data-en="UMC's most important resources are fab capacity, process technology, and professional engineering talent. The wafer foundry industry is highly dependent on equipment and technology, so UMC's ability to maintain yield and improve process capabilities directly impacts its market competitiveness and order-winning ability.">聯電最重要的資源是晶圓廠產能、製程技術與專業工程人才。晶圓代工產業高度依賴設備與技術，因此聯電是否能持續維持良率、提升製程能力，直接影響它在市場上的競爭力與接單能力。</p>
+          </div>
         </div>
-        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
       </div>
 
-      <div class="bmc-card bmc-card-split-bot" style="grid-area:channel">
-        <div class="bmc-front">
-          <span class="bmc-icon">🌐</span>
-          <h4 class="bmc-title" data-zh="通路關係" data-en="Channels">通路關係</h4>
-          <div class="bmc-divider"></div>
-          <p class="bmc-summary" data-zh="全球辦公據點、業務團隊、技術支援" data-en="Global offices, sales teams, technical support">全球辦公據點、業務團隊、技術支援</p>
+      <!-- 通路關係 row 2 col 4 -->
+      <div class="bmc-cell" style="grid-area:channel">
+        <div class="bmc-inner">
+          <div class="bmc-front">
+            <h4 class="bmc-title" data-zh="通路關係" data-en="Channels">通路關係</h4>
+            <p class="bmc-sum" data-zh="全球辦公據點、業務團隊、技術支援" data-en="Global offices, sales teams, technical support">全球辦公據點、業務團隊、技術支援</p>
+          </div>
+          <div class="bmc-back">
+            <h4 class="bmc-back-title" data-zh="通路關係" data-en="Channels">通路關係</h4>
+            <p class="bmc-back-text" data-zh="聯電不是靠零售通路或電商銷售，而是透過全球辦公據點、業務團隊與技術支援人員直接接觸客戶。這種通路模式有助於聯電在不同地區維持即時溝通，也能更快回應客戶在設計、製程與量產上的需求。" data-en="UMC doesn't rely on retail channels or e-commerce, but directly reaches customers through global office locations, sales teams, and technical support staff. This channel model helps UMC maintain real-time communication across different regions and respond more quickly to customer needs in design, process, and mass production.">聯電不是靠零售通路或電商銷售，而是透過全球辦公據點、業務團隊與技術支援人員直接接觸客戶。這種通路模式有助於聯電在不同地區維持即時溝通，也能更快回應客戶在設計、製程與量產上的需求。</p>
+          </div>
         </div>
-        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
       </div>
 
-      <!-- Row 3: 成本結構 | 收益流 -->
-      <div class="bmc-card bmc-card-wide" style="grid-area:cost">
-        <div class="bmc-front">
-          <span class="bmc-icon">📉</span>
-          <h4 class="bmc-title" data-zh="成本結構" data-en="Cost Structure">成本結構</h4>
-          <div class="bmc-divider"></div>
-          <p class="bmc-summary" data-zh="設備折舊、廠房投資、研發費用" data-en="Equipment depreciation, facility investment, R&D expenses">設備折舊、廠房投資、研發費用</p>
+      <!-- 成本結構 row 3 col 1~2 -->
+      <div class="bmc-cell" style="grid-area:cost">
+        <div class="bmc-inner">
+          <div class="bmc-front">
+            <h4 class="bmc-title" data-zh="成本結構" data-en="Cost Structure">成本結構</h4>
+            <p class="bmc-sum" data-zh="設備折舊、廠房投資、研發費用" data-en="Equipment depreciation, facility investment, R&D expenses">設備折舊、廠房投資、研發費用</p>
+          </div>
+          <div class="bmc-back">
+            <h4 class="bmc-back-title" data-zh="成本結構" data-en="Cost Structure">成本結構</h4>
+            <p class="bmc-back-text" data-zh="聯電的成本結構以設備折舊、廠房建置投資、研發支出與人力成本為主。因為晶圓代工屬於高度資本密集產業，所以聯電必須持續投入大量資金維持產能與技術更新，成本管理也就成為獲利能力的重要關鍵。" data-en="UMC's cost structure is mainly composed of equipment depreciation, facility construction investment, R&D expenditure, and labor costs. Because wafer foundry is a highly capital-intensive industry, UMC must continuously invest large amounts of capital to maintain capacity and technology updates, making cost management a critical key to profitability.">聯電的成本結構以設備折舊、廠房建置投資、研發支出與人力成本為主。因為晶圓代工屬於高度資本密集產業，所以聯電必須持續投入大量資金維持產能與技術更新，成本管理也就成為獲利能力的重要關鍵。</p>
+          </div>
         </div>
-        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
       </div>
 
-      <div class="bmc-card bmc-card-wide" style="grid-area:revenue">
-        <div class="bmc-front">
-          <span class="bmc-icon">📈</span>
-          <h4 class="bmc-title" data-zh="收益流" data-en="Revenue Streams">收益流</h4>
-          <div class="bmc-divider"></div>
-          <p class="bmc-summary" data-zh="晶圓代工收入、技術服務收入、合作案收入" data-en="Foundry revenue, technical service revenue, collaboration income">晶圓代工收入、技術服務收入、合作案收入</p>
+      <!-- 收益流 row 3 col 3~5 -->
+      <div class="bmc-cell" style="grid-area:revenue">
+        <div class="bmc-inner">
+          <div class="bmc-front">
+            <h4 class="bmc-title" data-zh="收益流" data-en="Revenue Streams">收益流</h4>
+            <p class="bmc-sum" data-zh="晶圓代工收入、技術服務收入、合作案收入" data-en="Foundry revenue, technical service revenue, collaboration income">晶圓代工收入、技術服務收入、合作案收入</p>
+          </div>
+          <div class="bmc-back">
+            <h4 class="bmc-back-title" data-zh="收益流" data-en="Revenue Streams">收益流</h4>
+            <p class="bmc-back-text" data-zh="聯電最主要的收入來源是晶圓代工，也就是替客戶生產晶片所獲得的製造收入。除此之外，聯電也可能透過技術服務、合作開發或特定專案帶來額外收益，因此它的營收核心仍然是製造，但也具備技術服務型收入的特性。" data-en="UMC's primary revenue source is wafer foundry — manufacturing income from producing chips for customers. Additionally, UMC may generate extra revenue through technical services, collaborative development, or specific projects, so its core revenue remains manufacturing but also has characteristics of technical service income.">聯電最主要的收入來源是晶圓代工，也就是替客戶生產晶片所獲得的製造收入。除此之外，聯電也可能透過技術服務、合作開發或特定專案帶來額外收益，因此它的營收核心仍然是製造，但也具備技術服務型收入的特性。</p>
+          </div>
         </div>
-        <div class="bmc-back"><p class="bmc-back-text" data-zh="（詳細內容即將加入）" data-en="(Details coming soon)">(詳細內容即將加入)</p></div>
       </div>
 
     </div><!-- /bmc-grid -->

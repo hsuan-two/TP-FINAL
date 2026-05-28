@@ -399,10 +399,15 @@
     if (!el || !window.L) return;
 
     const map = L.map('worldMap', {
-      center: [25, 20],
+      center: [22, 30],
       zoom: 2,
-      zoomControl: true,
+      zoomControl: false,
       scrollWheelZoom: false,
+      dragging: false,
+      touchZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
       attributionControl: false
     });
 
@@ -413,17 +418,31 @@
     }).addTo(map);
 
     SITES.forEach(s => {
+      // Tooltip direction: NL and US point downward to avoid edge clipping
+      const ttDir = (s.id === 'nl' || s.id === 'us') ? 'bottom' : 'top';
+      const ttOffset = ttDir === 'bottom' ? [0, 10] : [0, -28];
+
       const marker = L.marker([s.lat, s.lng], { icon: makeIcon(s.type) }).addTo(map);
+
+      // Use tooltip instead of popup — avoids flicker caused by popup covering the marker
+      const isEdge = (s.id === 'nl' || s.id === 'us');
       marker.bindTooltip(
-        `<div class="lf-tip-name">${currentLang==='zh'?s.nameZh:s.nameEn}</div>
+        `<div class="lf-tip-name">${s.nameZh}</div>
+         <div class="lf-tip-name-en">${s.nameEn}</div>
          <div class="lf-tip-text">${currentLang==='zh'?s.textZh:s.textEn}</div>`,
-        { permanent: false, direction: 'top', className: 'lf-tooltip', offset: [0, -28] }
+        {
+          permanent: false,
+          sticky: false,
+          direction: isEdge ? 'bottom' : 'top',
+          offset: isEdge ? [0, 14] : [0, -14],
+          className: 'lf-tooltip',
+          opacity: 1
+        }
       );
       marker._siteData = s;
       mapMarkers.push(marker);
     });
 
-    // Lang sync: update tooltips
     document.getElementById('langBtn')?.addEventListener('click', () => {
       setTimeout(() => {
         const sample = document.querySelector('[data-zh][data-en]');
@@ -431,7 +450,8 @@
         mapMarkers.forEach(m => {
           const s = m._siteData;
           m.setTooltipContent(
-            `<div class="lf-tip-name">${currentLang==='zh'?s.nameZh:s.nameEn}</div>
+            `<div class="lf-tip-name">${s.nameZh}</div>
+             <div class="lf-tip-name-en">${s.nameEn}</div>
              <div class="lf-tip-text">${currentLang==='zh'?s.textZh:s.textEn}</div>`
           );
         });
@@ -446,3 +466,9 @@
   if (window.L) { initMap(); }
   else { window.addEventListener('load', initMap); }
 })();
+
+/* ══ BMC FLIP ══ */
+document.querySelectorAll('.bmc-cell').forEach(cell => {
+  cell.addEventListener('click', () => cell.classList.add('flipped'));
+  cell.addEventListener('mouseleave', () => cell.classList.remove('flipped'));
+});
