@@ -162,6 +162,8 @@ body {
   background:var(--offwhite); padding:3.5rem 0 4rem;
   position:relative; transition:background var(--trans);
   overflow:hidden;
+  isolation: isolate;   /* contain card z-index within this section */
+  z-index: 0;
 }
 
 /* viewport: fixed height, no scroll */
@@ -169,7 +171,7 @@ body {
   position: relative;
   width: 100%;
   height: 440px; /* tall enough for the center card */
-  overflow: hidden;
+  overflow: visible;  /* cards spread beyond width via transform */
 }
 
 .carousel-track {
@@ -238,6 +240,8 @@ body {
   padding:5rem 2rem 6rem;
   background:var(--white);
   transition:background var(--trans);
+  position: relative;
+  z-index: 1;
 }
 .section-page:nth-of-type(even) { background:var(--offwhite); }
 .section-header { text-align:center; margin-bottom:3rem; }
@@ -282,15 +286,9 @@ body {
 
 /* ── RWD ── */
 @media(max-width:900px) {
-  .carousel-track { padding:2rem calc(50vw - 105px); }
-  .card { width:155px; height:230px; }
-  .card.is-center { width:210px; height:310px; }
   .logo-name { display:none; }
 }
 @media(max-width:600px) {
-  .carousel-track { gap:.8rem; padding:2rem calc(50vw - 85px); }
-  .card { width:120px; height:180px; }
-  .card.is-center { width:170px; height:260px; }
   .section-page { padding:3.5rem 1.2rem 4rem; }
 }
 
@@ -416,7 +414,7 @@ body {
   align-items: center;
   justify-content: flex-start;
 }
-.org-spacer { flex: 1; min-height: 0; }
+.org-spacer { flex: 1; min-height: 0; display: none; }
 .org-content-wrap {
   width: 100%;
   display: flex;
@@ -493,10 +491,12 @@ body {
   transition: background var(--trans);
 }
 .org-desc-text {
-  color: rgba(255,255,255,.88);
+  color: rgba(255,255,255,.92);
   font-size: .86rem;
   line-height: 1.8;
   font-weight: 300;
+  display: block;
+  min-height: 1em;
 }
 
 /* ── 右：KPI + 製程圖 ── */
@@ -722,7 +722,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #07111f;
+  background: #07111f !important;
+  color: #fff;
   padding: 6rem 2rem;
   position: relative;
   overflow: hidden;
@@ -777,12 +778,15 @@ body {
   text-shadow: 0 2px 16px rgba(0,0,0,.4);
 }
 .market-hero-sub {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: rgba(255,255,255,.9);
-  line-height: 1.85;
-  letter-spacing: .03em;
-  max-width: 640px;
-  margin: 0 auto;
+  font-size: .95rem;
+  color: rgba(255,255,255,.82);
+  line-height: 1.5;
+  letter-spacing: .06em;
+  font-family: 'DM Mono', monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
   text-shadow: 0 1px 8px rgba(0,0,0,.3);
 }
 
@@ -955,7 +959,7 @@ body {
 }
 
 /* ══ BMC ══ */
-.bmc-section { background: var(--offwhite); }
+.bmc-section { background: var(--offwhite); isolation: isolate; }
 
 .bmc-grid {
   display: grid;
@@ -976,6 +980,7 @@ body {
   perspective: 1000px;
   min-height: 170px;
   cursor: pointer;
+  position: relative;  /* contain the absolute front/back children */
 }
 .bmc-inner {
   position: relative;
@@ -984,6 +989,7 @@ body {
   min-height: 170px;
   transform-style: preserve-3d;
   transition: transform .55s cubic-bezier(.4,0,.2,1);
+  isolation: isolate;
 }
 .bmc-cell.flipped .bmc-inner { transform: rotateY(180deg); }
 
@@ -1081,9 +1087,10 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0;
   padding-bottom: .5rem;
+  min-height: 0;
 }
 
 /* ── Map permanent bilingual label ── */
