@@ -1067,7 +1067,7 @@ body {
   .bmc-inner { min-height: 140px; }
 }
 
-/* org-content-wrap: 撐滿剩餘高度，讓按鈕+說明框垂直置中 */
+/* org-content-wrap: 往下推對齊右側第二格KPI */
 .org-content-wrap {
   flex: 1;
   width: 100%;
@@ -1075,6 +1075,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   gap: 0;
+  padding-top: 5.5rem;
   padding-bottom: .5rem;
   min-height: 0;
 }
