@@ -526,6 +526,174 @@
     </div><!-- /bmc-grid -->
   </section>
 
+  <!-- ══ COMPETITOR ANALYSIS ══ -->
+  <section class="section-page" id="market-strategy">
+    <div class="comp-wrap">
+
+      <!-- ── 左半：滑動卡片 ── -->
+      <div class="comp-left">
+        <div class="comp-cards-wrap" id="compCardsWrap">
+          <div class="comp-cards-track" id="compCardsTrack">
+
+            <!-- 卡片 1：科技策略 -->
+            <div class="comp-card">
+              <h4 class="comp-card-title" data-zh="科技策略" data-en="Technology Strategy">科技策略</h4>
+              <div class="comp-card-row">
+                <div class="comp-card-col comp-col-tsmc">
+                  <span class="comp-col-name">TSMC</span>
+                  <ul class="comp-col-list">
+                    <li data-zh="持續推進 3nm / 2nm" data-en="Advancing 3nm / 2nm nodes">持續推進 3nm / 2nm</li>
+                    <li data-zh="技術領先全球" data-en="Global technology leader">技術領先全球</li>
+                  </ul>
+                </div>
+                <div class="comp-card-col comp-col-umc">
+                  <span class="comp-col-name">UMC</span>
+                  <ul class="comp-col-list">
+                    <li data-zh="聚焦成熟製程（28nm 以上）" data-en="Focus on mature nodes (28nm+)">聚焦成熟製程（28nm 以上）</li>
+                    <li data-zh="穩定供應與成本控制" data-en="Stable supply & cost control">穩定供應與成本控制</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 卡片 2：市場位置 -->
+            <div class="comp-card">
+              <h4 class="comp-card-title" data-zh="市場位置" data-en="Market Position">市場位置</h4>
+              <div class="comp-card-row">
+                <div class="comp-card-col comp-col-tsmc">
+                  <span class="comp-col-name">TSMC</span>
+                  <ul class="comp-col-list">
+                    <li data-zh="全球龍頭" data-en="Global market leader">全球龍頭</li>
+                    <li data-zh="高端市場主導" data-en="Dominates high-end market">高端市場主導</li>
+                  </ul>
+                </div>
+                <div class="comp-card-col comp-col-umc">
+                  <span class="comp-col-name">UMC</span>
+                  <ul class="comp-col-list">
+                    <li data-zh="第二梯隊穩定供應商" data-en="Stable tier-2 supplier">第二梯隊穩定供應商</li>
+                    <li data-zh="車用與工業市場強" data-en="Strong in automotive & industrial">車用與工業市場強</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 卡片 3：商業策略 -->
+            <div class="comp-card">
+              <h4 class="comp-card-title" data-zh="商業策略" data-en="Business Strategy">商業策略</h4>
+              <div class="comp-card-row">
+                <div class="comp-card-col comp-col-tsmc">
+                  <span class="comp-col-name">TSMC</span>
+                  <ul class="comp-col-list">
+                    <li data-zh="技術領先＝定價權" data-en="Tech lead = pricing power">技術領先＝定價權</li>
+                    <li data-zh="高毛利策略" data-en="High-margin strategy">高毛利策略</li>
+                  </ul>
+                </div>
+                <div class="comp-card-col comp-col-umc">
+                  <span class="comp-col-name">UMC</span>
+                  <ul class="comp-col-list">
+                    <li data-zh="成本效率＋穩定客戶" data-en="Cost efficiency + stable clients">成本效率＋穩定客戶</li>
+                    <li data-zh="避開直接競爭" data-en="Avoid direct competition">避開直接競爭</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 複製前三張讓循環無縫 -->
+            <div class="comp-card comp-card-clone">
+              <h4 class="comp-card-title" data-zh="科技策略" data-en="Technology Strategy">科技策略</h4>
+              <div class="comp-card-row">
+                <div class="comp-card-col comp-col-tsmc">
+                  <span class="comp-col-name">TSMC</span>
+                  <ul class="comp-col-list">
+                    <li data-zh="持續推進 3nm / 2nm" data-en="Advancing 3nm / 2nm nodes">持續推進 3nm / 2nm</li>
+                    <li data-zh="技術領先全球" data-en="Global technology leader">技術領先全球</li>
+                  </ul>
+                </div>
+                <div class="comp-card-col comp-col-umc">
+                  <span class="comp-col-name">UMC</span>
+                  <ul class="comp-col-list">
+                    <li data-zh="聚焦成熟製程（28nm 以上）" data-en="Focus on mature nodes (28nm+)">聚焦成熟製程（28nm 以上）</li>
+                    <li data-zh="穩定供應與成本控制" data-en="Stable supply & cost control">穩定供應與成本控制</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /track -->
+
+          <!-- 指示點 -->
+          <div class="comp-dots">
+            <span class="comp-dot active" data-i="0"></span>
+            <span class="comp-dot" data-i="1"></span>
+            <span class="comp-dot" data-i="2"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 右半：散佈圖 ── -->
+      <div class="comp-right">
+        <h3 class="comp-chart-title" data-zh="市場影響力 × 技術層級" data-en="Market Influence × Technology Level">市場影響力 × 技術層級</h3>
+        <div class="scatter-wrap">
+          <svg class="scatter-svg" id="scatterChart" viewBox="0 0 480 400" preserveAspectRatio="xMidYMid meet">
+
+            <!-- 背景格線 -->
+            <defs>
+              <pattern id="grid" width="48" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 48 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.15"/>
+              </pattern>
+            </defs>
+            <rect width="380" height="300" x="60" y="20" fill="url(#grid)" class="scatter-grid"/>
+
+            <!-- Y 軸 -->
+            <line x1="60" y1="20" x2="60" y2="330" stroke="currentColor" stroke-width="2" class="scatter-axis"/>
+            <polygon points="60,14 56,24 64,24" class="scatter-arrow"/>
+            <!-- Y 軸標籤 -->
+            <text class="scatter-axis-label" x="14" y="180" transform="rotate(-90,14,180)" text-anchor="middle"
+              data-zh="市場影響力" data-en="Market Influence">市場影響力</text>
+
+            <!-- X 軸 -->
+            <line x1="60" y1="330" x2="446" y2="330" stroke="currentColor" stroke-width="2" class="scatter-axis"/>
+            <polygon points="452,330 442,326 442,334" class="scatter-arrow"/>
+            <!-- X 軸標籤 -->
+            <text class="scatter-axis-label" x="350" y="372" text-anchor="middle"
+              data-zh="技術層級" data-en="Technology Level">技術層級</text>
+
+            <!-- ── 四個競爭者 ── -->
+            <!-- TSMC: 高市場影響力、高技術層級 -->
+            <g class="scatter-dot-group" data-company="TSMC">
+              <circle cx="340" cy="75" r="10" fill="#7b2d2d" class="scatter-dot"/>
+              <text x="356" y="70" class="scatter-company-name">TSMC</text>
+              <text x="356" y="84" class="scatter-company-sub" data-zh="絕對領導者" data-en="Absolute Leader">絕對領導者</text>
+            </g>
+
+            <!-- Samsung: 中高影響力、高技術層級 -->
+            <g class="scatter-dot-group" data-company="Samsung">
+              <circle cx="370" cy="145" r="9" fill="#b07040" class="scatter-dot"/>
+              <text x="386" y="140" class="scatter-company-name">Samsung</text>
+              <text x="386" y="154" class="scatter-company-sub" data-zh="挑戰者" data-en="Challenger">挑戰者</text>
+            </g>
+
+            <!-- UMC: 中等影響力、中技術層級 -->
+            <g class="scatter-dot-group" data-company="UMC">
+              <circle cx="270" cy="210" r="10" fill="#1e4f7a" class="scatter-dot scatter-dot-umc"/>
+              <text x="286" y="205" class="scatter-company-name scatter-umc-label">UMC</text>
+              <text x="286" y="219" class="scatter-company-sub" data-zh="穩定供應商" data-en="Stable Supplier">穩定供應商</text>
+            </g>
+
+            <!-- GlobalFoundries: 較低影響力、中低技術 -->
+            <g class="scatter-dot-group" data-company="GlobalFoundries">
+              <circle cx="175" cy="268" r="8" fill="#555" class="scatter-dot"/>
+              <text x="191" y="263" class="scatter-company-name">GlobalFoundries</text>
+              <text x="191" y="277" class="scatter-company-sub" data-zh="利基市場" data-en="Niche Market">利基市場</text>
+            </g>
+
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ══ FOOTER ══ -->
   <footer class="footer">
     <span data-zh="1142 國際策略管理｜授課教師：梅筱珍" data-en="International Strategic Management｜Prof. Mei Hsiao-Chen">

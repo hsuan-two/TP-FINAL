@@ -472,3 +472,50 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
   });
 
 })();
+
+/* ══ 7. COMP CARD CAROUSEL ══ */
+(function () {
+  'use strict';
+
+  const track = document.getElementById('compCardsTrack');
+  if (!track) return;
+
+  const cards  = Array.from(track.querySelectorAll('.comp-card:not(.comp-card-clone)'));
+  const dots   = Array.from(document.querySelectorAll('.comp-dot'));
+  const N      = cards.length;
+  let current  = 0;
+  let timer    = null;
+  let paused   = false;
+
+  function goTo(idx) {
+    cards[current].classList.remove('comp-card-active');
+    current = ((idx % N) + N) % N;
+    cards[current].classList.add('comp-card-active');
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function startAuto() {
+    stopAuto();
+    timer = setInterval(() => { if (!paused) goTo(current + 1); }, 3000);
+  }
+  function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
+
+  const wrap = document.getElementById('compCardsWrap');
+  if (wrap) {
+    wrap.addEventListener('mouseenter', () => { paused = true; });
+    wrap.addEventListener('mouseleave', () => { paused = false; });
+  }
+
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); startAuto(); }));
+
+  let tx = 0;
+  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; stopAuto(); }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+    startAuto();
+  }, { passive: true });
+
+  goTo(0);
+  startAuto();
+})();
