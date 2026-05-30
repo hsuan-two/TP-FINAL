@@ -1158,7 +1158,7 @@ body {
 }
 .comp-cards-track {
   position: relative;
-  min-height: 280px;
+  min-height: 200px;
   border-radius: 16px;
 }
 .comp-card {
@@ -1167,10 +1167,10 @@ body {
   background: var(--white);
   border: 1.5px solid var(--light);
   border-radius: 16px;
-  padding: 1.6rem 1.8rem;
+  padding: 1.2rem 1.4rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: .7rem;
   box-shadow: 0 4px 18px rgba(11,37,69,.08);
   transition: opacity .45s ease, background var(--trans), border-color var(--trans);
   opacity: 0;
@@ -1333,4 +1333,17 @@ body {
   .comp-wrap { flex-direction: column; }
   .comp-left { min-height: 200px; }
   .comp-left-placeholder { height: 200px; }
+}
+
+/* ── Competitor analysis note ── */
+.comp-analysis-note {
+  background: var(--offwhite);
+  border-left: 3px solid var(--navy2);
+  border-radius: 0 10px 10px 0;
+  padding: 1rem 1.3rem;
+  margin-top: .5rem;
+  font-size: .82rem;
+  line-height: 1.85;
+  color: var(--text);
+  transition: background var(--trans), color var(--trans), border-color var(--trans);
 }
