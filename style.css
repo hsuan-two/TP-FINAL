@@ -1075,7 +1075,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   gap: 0;
-  padding-top: 5.5rem;
+  padding-top: 1.8rem;
   padding-bottom: .5rem;
   min-height: 0;
 }

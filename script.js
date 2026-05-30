@@ -54,6 +54,19 @@
     let leaveTimer = null;
     group.addEventListener('mouseenter', () => { clearTimeout(leaveTimer); group.classList.add('open'); });
     group.addEventListener('mouseleave', () => { leaveTimer = setTimeout(() => group.classList.remove('open'), 180); });
+
+    // 點大標題 → 跳轉
+    const title = group.querySelector('.smgroup-title');
+    if (title && title.dataset.href) {
+      title.style.cursor = 'pointer';
+      title.addEventListener('click', () => {
+        const target = document.querySelector(title.dataset.href);
+        if (target) {
+          closeMenu();
+          setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+        }
+      });
+    }
   });
 
   /* ── Carousel ── */
