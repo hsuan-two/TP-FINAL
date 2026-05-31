@@ -1559,3 +1559,152 @@ body {
 @media (max-width: 560px) {
   .pestel-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ══ RESOURCE ALLOCATION ══ */
+#resource-alloc { background: var(--white); }
+
+.resalloc-wrap {
+  display: flex;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+}
+
+/* Title block */
+.resalloc-left {
+  display: flex;
+  align-items: center;
+}
+
+.resalloc-right { display: none; }
+
+.resalloc-main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  font-weight: 900;
+  color: var(--navy);
+  letter-spacing: .06em;
+  transition: color var(--trans);
+}
+
+.resalloc-rows-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.resalloc-row-full {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+
+.resalloc-card {
+  flex: 0 0 240px;
+  background: var(--navy);
+  border-radius: 12px;
+  padding: .85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  box-shadow: 0 3px 12px rgba(11,37,69,.15);
+  transition: background var(--trans), transform .2s, box-shadow .2s;
+}
+.resalloc-card:hover {
+  transform: translateX(3px);
+  box-shadow: 0 6px 20px rgba(11,37,69,.22);
+}
+
+.resalloc-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: rgba(255,255,255,.85);
+}
+.resalloc-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.resalloc-label {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .04em;
+  transition: color var(--trans);
+}
+
+.resalloc-arrow {
+  font-size: 1.4rem;
+  color: var(--navy2);
+  flex-shrink: 0;
+  opacity: .7;
+  line-height: 1;
+}
+
+/* Right two-thirds */
+.resalloc-right {
+  flex: 1;
+  min-height: 300px;
+}
+
+@media (max-width: 700px) {
+  .resalloc-wrap { flex-direction: column; }
+  .resalloc-left { flex: none; width: 100%; }
+}
+
+/* ── VRIN cards ── */
+.vrin-card {
+  display: inline-flex;
+  width: 140px;
+  flex-shrink: 0;
+  background: var(--offwhite);
+  border: 2px solid var(--navy2);
+  border-radius: 12px;
+  padding: .85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  transition: background var(--trans), border-color var(--trans), transform .2s;
+}
+.vrin-card:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  transform: translateX(3px);
+}
+.vrin-card:hover .vrin-letter,
+.vrin-card:hover .vrin-label { color: #fff; }
+
+.vrin-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1;
+  transition: color var(--trans);
+}
+.vrin-label {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: .04em;
+  transition: color var(--trans);
+}
+
+/* ── VRIN description card ── */
+.vrin-desc {
+  flex: 1;
+  background: var(--offwhite);
+  border: 1.5px solid var(--light);
+  border-radius: 12px;
+  padding: .7rem 1rem;
+  font-size: .78rem;
+  line-height: 1.75;
+  color: var(--text);
+  transition: background var(--trans), border-color var(--trans), color var(--trans);
+}
