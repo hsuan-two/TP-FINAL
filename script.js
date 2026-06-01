@@ -532,3 +532,237 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
   goTo(0);
   startAuto();
 })();
+
+/* ══ 8. CORE COMPETENCE (Canvas) ══ */
+(function () {
+  'use strict';
+
+  const SEGS = [
+    { zh:'成熟製程',           en:'Mature Process',
+      color:'#0b2545',
+      dZh:'聯電在 22 奈米、28 奈米與其他成熟節點具備穩定量產能力，能支撐大量且長生命週期的客戶需求。',
+      dEn:'UMC has stable mass-production at 22nm, 28nm and other mature nodes, supporting high-volume, long-lifecycle customer needs.' },
+    { zh:'特殊製程',           en:'Specialty Process',
+      color:'#1a5276',
+      dZh:'聯電在邏輯、混合訊號、射頻、嵌入式高壓、RFSOI 等領域有長期累積，能提供差異化解決方案。',
+      dEn:'UMC has long-term expertise in logic, mixed-signal, RF, embedded HV, and RFSOI, delivering differentiated solutions.' },
+    { zh:'全球產能配置',       en:'Global Capacity',
+      color:'#1f6799',
+      dZh:'聯電透過台灣、新加坡、日本與中國等多地據點，提升供應鏈彈性與風險分散能力。',
+      dEn:'UMC enhances supply chain flexibility and risk diversification through sites in Taiwan, Singapore, Japan, and China.' },
+    { zh:'客戶合作與服務能力', en:'Customer Service',
+      color:'#2980b9',
+      dZh:'聯電重視與客戶共同開發、製程導入與技術支援，讓代工不只是製造，而是共同解決問題的夥伴關係。',
+      dEn:'UMC emphasizes co-development, process ramp, and technical support — making foundry a true partnership.' },
+    { zh:'永續與製造效率',     en:'Sustainability & Efficiency',
+      color:'#5dade2',
+      dZh:'聯電把節能減碳、資源回收與製程效率納入營運核心，有助於強化長期競爭力與國際客戶信任。',
+      dEn:'UMC integrates energy saving, carbon reduction, and process efficiency into its core operations.' },
+  ];
+
+  const N     = SEGS.length;
+  const SLICE = (Math.PI * 2) / N;
+  const GAP   = 0.04;
+  let lang    = 'zh';
+  let hovered = -1;
+
+  const canvas = document.getElementById('coreCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  // HiDPI fix: scale canvas by devicePixelRatio for sharp rendering
+  const DPR = window.devicePixelRatio || 1;
+  const SIZE = 520;
+  canvas.width  = SIZE * DPR;
+  canvas.height = SIZE * DPR;
+  canvas.style.width  = SIZE + 'px';
+  canvas.style.height = SIZE + 'px';
+  ctx.scale(DPR, DPR);
+
+  const W = SIZE, H = SIZE;
+  const CX = W / 2, CY = H / 2;
+  const R_OUT = 210, R_IN = 115;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const offset = -Math.PI / 2;
+
+    SEGS.forEach((seg, i) => {
+      const a0   = offset + i * SLICE + GAP;
+      const a1   = offset + (i + 1) * SLICE - GAP;
+      const aMid = (a0 + a1) / 2;
+      const isHov = (i === hovered);
+
+      ctx.save();
+      if (isHov) {
+        const dx = Math.cos(aMid) * 18;
+        const dy = Math.sin(aMid) * 18;
+        ctx.translate(dx, dy);
+        ctx.shadowColor = seg.color;
+        ctx.shadowBlur  = 18;
+      }
+
+      // Arc
+      ctx.beginPath();
+      ctx.moveTo(CX + Math.cos(a0) * R_IN, CY + Math.sin(a0) * R_IN);
+      ctx.arc(CX, CY, R_OUT, a0, a1);
+      ctx.arc(CX, CY, R_IN,  a1, a0, true);
+      ctx.closePath();
+      ctx.fillStyle = isHov ? lighten(seg.color, 30) : seg.color;
+      ctx.fill();
+      ctx.restore();
+
+      // Label
+      ctx.save();
+      if (isHov) {
+        ctx.translate(Math.cos(aMid) * 18, Math.sin(aMid) * 18);
+      }
+      const RL = (R_OUT + R_IN) / 2;
+      const lx = CX + Math.cos(aMid) * RL;
+      const ly = CY + Math.sin(aMid) * RL;
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 15px "Noto Sans TC", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const label = lang === 'zh' ? seg.zh : seg.en;
+      const lines = splitLabel(label);
+      const lh = 19;
+      lines.forEach((line, li) => {
+        ctx.fillText(line, lx, ly + (li - (lines.length-1)/2) * lh);
+      });
+      ctx.restore();
+    });
+
+    // Centre hole
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(CX, CY, R_IN - 2, 0, Math.PI * 2);
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    ctx.fillStyle = isDark ? '#0d1b2a' : '#ffffff';
+    ctx.fill();
+    ctx.restore();
+
+    const isDk = document.documentElement.getAttribute('data-theme') === 'dark';
+
+    if (hovered >= 0) {
+      const seg = SEGS[hovered];
+      const desc = lang === 'zh' ? seg.dZh : seg.dEn;
+
+      // Split desc into lines of ~10 chars
+      const words = desc.split('');
+      const lineMax = 10;
+      const descLines = [];
+      for (let i = 0; i < words.length; i += lineMax) {
+        descLines.push(words.slice(i, i + lineMax).join(''));
+      }
+
+      const titleFontSize = 14;
+      const descFontSize  = 11;
+      const titleH = titleFontSize + 6;
+      const dividerH = 12;
+      const descLH = 15;
+      const totalH = titleH + dividerH + descLines.length * descLH;
+      let y = CY - totalH / 2;
+
+      // Title
+      ctx.save();
+      ctx.fillStyle = seg.color;
+      ctx.font = `bold ${titleFontSize}px "Noto Sans TC", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText(lang === 'zh' ? seg.zh : seg.en, CX, y);
+      y += titleH;
+      ctx.restore();
+
+      // Divider
+      ctx.save();
+      ctx.strokeStyle = seg.color;
+      ctx.lineWidth = 1.2;
+      ctx.globalAlpha = 0.35;
+      ctx.beginPath();
+      ctx.moveTo(CX - 48, y + 3);
+      ctx.lineTo(CX + 48, y + 3);
+      ctx.stroke();
+      ctx.restore();
+      y += dividerH;
+
+      // Description
+      ctx.save();
+      ctx.fillStyle = isDk ? '#b0c8e0' : '#3a4f65';
+      ctx.font = `${descFontSize}px "Noto Sans TC", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      descLines.forEach((line, li) => {
+        ctx.fillText(line, CX, y + li * descLH);
+      });
+      ctx.restore();
+
+    } else {
+      // Default: UMC + 核心能耐
+      ctx.fillStyle = isDk ? '#dce8f5' : '#0b2545';
+      ctx.font = 'bold 24px "Playfair Display", serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('UMC', CX, CY - 12);
+      ctx.font = '12px "Noto Sans TC", sans-serif';
+      ctx.fillStyle = '#7a9bb8';
+      ctx.fillText(lang === 'zh' ? '核心能耐' : 'Core Competence', CX, CY + 12);
+      ctx.font = '10px "Noto Sans TC", sans-serif';
+      ctx.fillStyle = '#aab8c8';
+      ctx.fillText(lang === 'zh' ? '← hover 查看說明' : '← hover for details', CX, CY + 32);
+    }
+  }
+
+  function splitLabel(text) {
+    const lines = [];
+    for (let i = 0; i < text.length; i += 5) lines.push(text.slice(i, i + 5));
+    return lines;
+  }
+
+  function lighten(hex, amt) {
+    const n = parseInt(hex.slice(1), 16);
+    const r = Math.min(255, (n >> 16) + amt);
+    const g = Math.min(255, ((n >> 8) & 0xff) + amt);
+    const b = Math.min(255, (n & 0xff) + amt);
+    return `rgb(${r},${g},${b})`;
+  }
+
+  function getSegAt(mx, my) {
+    const dx = mx - CX, dy = my - CY;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist < R_IN || dist > R_OUT + 20) return -1;
+    let angle = Math.atan2(dy, dx) + Math.PI / 2;
+    if (angle < 0) angle += Math.PI * 2;
+    const idx = Math.floor(angle / SLICE) % N;
+    return idx;
+  }
+
+  canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left);
+    const my = (e.clientY - rect.top);
+    const idx = getSegAt(mx, my);
+    if (idx !== hovered) {
+      hovered = idx;
+      draw();
+    }
+  });
+
+  canvas.addEventListener('mouseleave', () => {
+    hovered = -1; draw();
+  });
+
+  // Lang sync
+  document.getElementById('langBtn')?.addEventListener('click', () => {
+    setTimeout(() => {
+      const s = document.querySelector('[data-zh][data-en]');
+      if (s) lang = s.textContent.trim() === s.dataset.zh ? 'zh' : 'en';
+      draw();
+    }, 60);
+  });
+
+  // Theme sync
+  document.getElementById('themeBtn')?.addEventListener('click', () => setTimeout(draw, 50));
+
+  draw();
+})();
