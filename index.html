@@ -87,6 +87,7 @@
       </div>
 
       <a href="#talent" class="smlink" data-zh="人力職缺" data-en="Talent &amp; Jobs">人力職缺</a>
+      <a href="#quiz"   class="smlink" data-zh="互動測驗" data-en="Interactive Quiz">互動測驗</a>
     </nav>
   </aside>
   <div class="overlay" id="overlay"></div>
@@ -105,7 +106,7 @@
   <section class="carousel-section" id="carousel">
     <div class="carousel-viewport">
       <div class="carousel-track" id="carouselTrack">
-        <div class="card" data-index="0" data-target="growth">
+        <div class="card" data-index="0" data-target="growth-global">
           <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80')"></div>
           <div class="card-overlay"></div>
           <span class="card-label" data-zh="成長策略" data-en="Growth Strategy">成長策略</span>
@@ -129,7 +130,7 @@
           <span class="card-label" data-zh="市場分析" data-en="Market Analysis">市場分析</span>
           <span class="card-brand">UMC</span>
         </div>
-        <div class="card" data-index="4" data-target="resource">
+        <div class="card" data-index="4" data-target="resource-alloc">
           <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80')"></div>
           <div class="card-overlay"></div>
           <span class="card-label" data-zh="資源評價" data-en="Resource Evaluation">資源評價</span>
@@ -986,6 +987,260 @@
         <p class="compres-text" data-zh="與英特爾合作後，可形成更完整的區域供應鏈網絡。" data-en="Through collaboration with Intel, a more complete regional supply chain network can be formed.">與英特爾合作後，可形成更完整的區域供應鏈網絡。</p>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ══ GLOBAL CAPACITY ══ -->
+  <section class="section-page" id="growth-global">
+    <div class="section-header">
+      <h2 class="section-title" data-zh="跨國產能布局" data-en="Global Capacity Layout">跨國產能布局</h2>
+      <p class="section-sub" data-zh="聯華電子全球策略據點配置" data-en="UMC Strategic Global Site Configuration">聯華電子全球策略據點配置</p>
+    </div>
+    <div class="gcap-wrap">
+      <div class="gcap-container">
+        <svg class="gcap-svg" viewBox="0 0 500 420" preserveAspectRatio="xMidYMid meet">
+          <!-- 連接線 -->
+          <line x1="250" y1="168" x2="250" y2="140" stroke="var(--navy2)" stroke-width="2" stroke-dasharray="6 4" opacity="0.4"/>
+          <line x1="312" y1="276" x2="337" y2="290" stroke="var(--navy2)" stroke-width="2" stroke-dasharray="6 4" opacity="0.4"/>
+          <line x1="188" y1="276" x2="163" y2="290" stroke="var(--navy2)" stroke-width="2" stroke-dasharray="6 4" opacity="0.4"/>
+
+          <!-- 中心圓：台灣 -->
+          <g class="gcap-node" data-id="tw">
+            <circle cx="250" cy="240" r="72" fill="#0b2545"/>
+            <text x="250" y="233" text-anchor="middle" fill="#fff" font-family="Noto Sans TC, sans-serif" font-size="14" font-weight="700">台灣</text>
+            <text x="250" y="251" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="Noto Sans TC, sans-serif" font-size="12">核心基地</text>
+          </g>
+          <!-- 上圓：美國 -->
+          <g class="gcap-node" data-id="us">
+            <circle cx="250" cy="85" r="55" fill="#134074"/>
+            <text x="250" y="78" text-anchor="middle" fill="#fff" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700">美國布局</text>
+            <text x="250" y="94" text-anchor="middle" fill="rgba(255,255,255,0.72)" font-family="Noto Sans TC, sans-serif" font-size="10">強化地緣安全</text>
+          </g>
+          <!-- 右下圓：日本 -->
+          <g class="gcap-node" data-id="jp">
+            <circle cx="384" cy="318" r="55" fill="#1a5276"/>
+            <text x="384" y="311" text-anchor="middle" fill="#fff" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700">日本</text>
+            <text x="384" y="327" text-anchor="middle" fill="rgba(255,255,255,0.72)" font-family="Noto Sans TC, sans-serif" font-size="10">提供在地化製造</text>
+          </g>
+          <!-- 左下圓：新加坡 -->
+          <g class="gcap-node" data-id="sg">
+            <circle cx="116" cy="318" r="55" fill="#1f6799"/>
+            <text x="116" y="311" text-anchor="middle" fill="#fff" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700">新加坡</text>
+            <text x="116" y="327" text-anchor="middle" fill="rgba(255,255,255,0.72)" font-family="Noto Sans TC, sans-serif" font-size="10">強化海外韌性</text>
+          </g>
+        </svg>
+
+        <!-- Hover 說明框 -->
+        <div class="gcap-tooltip" id="gcapTooltip">
+          <h4 class="gcap-tt-title" id="gcapTtTitle"></h4>
+          <p class="gcap-tt-text" id="gcapTtText"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ NEXT-GEN TECH ══ -->
+  <section class="section-page" id="growth-tech">
+    <div class="nextgen-wrap">
+
+      <!-- ── 左半 ── -->
+      <div class="nextgen-left">
+        <h2 class="nextgen-title" data-zh="次世代技術發展" data-en="Next-Gen Technology">次世代技術發展</h2>
+        <div class="nextgen-grid">
+
+          <div class="nextgen-card">
+            <div class="nextgen-tag">12nm FinFET</div>
+            <p class="nextgen-text" data-zh="聯電與英特爾合作開發，預計 2026 年完成驗證、2027 年量產，鎖定 WiFi 7、AI 邊緣運算與高效能消費性晶片市場。" data-en="Co-developed with Intel, expected to complete verification in 2026 and mass production in 2027, targeting WiFi 7, AI edge computing, and high-performance consumer chip markets.">聯電與英特爾合作開發，預計 2026 年完成驗證、2027 年量產，鎖定 WiFi 7、AI 邊緣運算與高效能消費性晶片市場。</p>
+          </div>
+
+          <div class="nextgen-card">
+            <div class="nextgen-tag" data-zh="矽光子平台" data-en="Silicon Photonics">矽光子平台</div>
+            <p class="nextgen-text" data-zh="聯電已取得 imec 矽光子技術授權，12 吋矽光子平台進入試產階段，瞄準資料中心與高速互連應用。" data-en="UMC has obtained imec silicon photonics technology licensing; the 12-inch silicon photonics platform has entered trial production, targeting data centers and high-speed interconnect applications.">聯電已取得 imec 矽光子技術授權，12 吋矽光子平台進入試產階段，瞄準資料中心與高速互連應用。</p>
+          </div>
+
+          <div class="nextgen-card">
+            <div class="nextgen-tag" data-zh="先進封裝" data-en="Advanced Packaging">先進封裝</div>
+            <p class="nextgen-text" data-zh="聯電正布局 Active Interposer、2.5D 封裝與 W2W 3D IC，強化 AI 與系統整合能力。" data-en="UMC is advancing Active Interposer, 2.5D packaging, and W2W 3D IC to strengthen AI and system integration capabilities.">聯電正布局 Active Interposer、2.5D 封裝與 W2W 3D IC，強化 AI 與系統整合能力。</p>
+          </div>
+
+          <div class="nextgen-card">
+            <div class="nextgen-tag" data-zh="成熟製程升級" data-en="Mature Process Upgrade">成熟製程升級</div>
+            <p class="nextgen-text" data-zh="包括 28eHV-LP、28ESF4、22RRAM、14FFC、RF-GaN、650V GaN 等平台，持續提升成熟製程的性能、功耗與應用範圍。" data-en="Platforms including 28eHV-LP, 28ESF4, 22RRAM, 14FFC, RF-GaN, and 650V GaN continuously improve mature process performance, power consumption, and application scope.">包括 28eHV-LP、28ESF4、22RRAM、14FFC、RF-GaN、650V GaN 等平台，持續提升成熟製程的性能、功耗與應用範圍。</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── 右半 ── -->
+      <div class="nextgen-right">
+        <h2 class="nextgen-title" data-zh="防禦性長約策略" data-en="Defensive LTA Strategy">防禦性長約策略</h2>
+        <div class="nextgen-grid">
+
+          <div class="nextgen-card">
+            <div class="nextgen-tag" data-zh="穩定營收" data-en="Revenue Stability">穩定營收</div>
+            <p class="nextgen-text" data-zh="長約能讓聯電較容易預估未來出貨與收入，減少景氣循環帶來的不確定性。" data-en="LTAs allow UMC to more easily forecast future shipments and revenue, reducing uncertainty from economic cycles.">長約能讓聯電較容易預估未來出貨與收入，減少景氣循環帶來的不確定性。</p>
+          </div>
+
+          <div class="nextgen-card">
+            <div class="nextgen-tag" data-zh="提高議價韌性" data-en="Bargaining Resilience">提高議價韌性</div>
+            <p class="nextgen-text" data-zh="對於具備特殊製程或高轉換成本的客戶，聯電可透過長約維持合作關係，避免單純陷入價格戰。" data-en="For customers with specialty processes or high switching costs, LTAs help UMC maintain partnerships and avoid pure price competition.">對於具備特殊製程或高轉換成本的客戶，聯電可透過長約維持合作關係，避免單純陷入價格戰。</p>
+          </div>
+
+          <div class="nextgen-card">
+            <div class="nextgen-tag" data-zh="防禦市場波動" data-en="Market Volatility Defense">防禦市場波動</div>
+            <p class="nextgen-text" data-zh="當成熟製程供需轉弱時，長約有助於維持稼動率與現金流，讓聯電的防禦屬性更明顯。" data-en="When mature process supply-demand weakens, LTAs help maintain utilization rates and cash flow, reinforcing UMC's defensive characteristics.">當成熟製程供需轉弱時，長約有助於維持稼動率與現金流，讓聯電的防禦屬性更明顯。</p>
+          </div>
+
+          <div class="nextgen-card">
+            <div class="nextgen-tag" data-zh="強化客戶綁定" data-en="Customer Lock-in">強化客戶綁定</div>
+            <p class="nextgen-text" data-zh="長約通常代表更深的供應鏈合作，對車用、工控等重視穩定供應的客戶特別重要。" data-en="LTAs represent deeper supply chain cooperation, especially important for automotive and industrial customers who prioritize stable supply.">長約通常代表更深的供應鏈合作，對車用、工控等重視穩定供應的客戶特別重要。</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ DYNAMIC CAPABILITY ══ -->
+  <section class="section-page" id="growth-dynamic">
+    <div class="section-header">
+      <h2 class="section-title" data-zh="動態能力分析" data-en="Dynamic Capability Analysis">動態能力分析</h2>
+      <p class="section-sub" data-zh="聯華電子四大動態競爭能力" data-en="UMC Four Dynamic Competitive Capabilities">聯華電子四大動態競爭能力</p>
+    </div>
+    <div class="dynamo-wrap">
+      <div class="dynamo-diagram">
+
+        <!-- 左上：感知能力 -->
+        <div class="dynamo-circle dynamo-tl">
+          <span class="dynamo-label" data-zh="感知能力" data-en="Sensing">感知能力</span>
+          <p class="dynamo-desc" data-zh="聯電能觀察到成熟製程需求的變化，例如車用、工控、特殊製程與 AI 外溢需求，並據此調整策略。" data-en="UMC can observe changes in mature process demand — such as automotive, industrial control, specialty processes, and AI spillover demand — and adjust strategy accordingly.">聯電能觀察到成熟製程需求的變化，例如車用、工控、特殊製程與 AI 外溢需求，並據此調整策略。</p>
+        </div>
+
+        <!-- 右上：調整能力 -->
+        <div class="dynamo-circle dynamo-tr">
+          <span class="dynamo-label" data-zh="調整能力" data-en="Seizing">調整能力</span>
+          <p class="dynamo-desc" data-zh="當成熟製程市場競爭加劇時，聯電會透過漲價、長約、差異化製程與客戶結構優化來回應市場壓力。" data-en="When mature process market competition intensifies, UMC responds through pricing adjustments, LTAs, differentiated processes, and customer structure optimization.">當成熟製程市場競爭加劇時，聯電會透過漲價、長約、差異化製程與客戶結構優化來回應市場壓力。</p>
+        </div>
+
+        <!-- 中央 -->
+        <div class="dynamo-center">
+          <span data-zh="動態能力分析" data-en="Dynamic Capability">動態能力分析</span>
+        </div>
+
+        <!-- 左下：延伸能力 -->
+        <div class="dynamo-circle dynamo-bl">
+          <span class="dynamo-label" data-zh="延伸能力" data-en="Extending">延伸能力</span>
+          <p class="dynamo-desc" data-zh="聯電不只守住成熟製程，也開始往次世代技術延伸，如 12 奈米 FinFET、矽光子與 2.5D/3D 封裝，形成新的成長曲線。" data-en="UMC not only defends its mature process position but also extends toward next-gen technologies such as 12nm FinFET, silicon photonics, and 2.5D/3D packaging to create new growth curves.">聯電不只守住成熟製程，也開始往次世代技術延伸，如 12 奈米 FinFET、矽光子與 2.5D/3D 封裝，形成新的成長曲線。</p>
+        </div>
+
+        <!-- 右下：重組能力 -->
+        <div class="dynamo-circle dynamo-br">
+          <span class="dynamo-label" data-zh="重組能力" data-en="Reconfiguring">重組能力</span>
+          <p class="dynamo-desc" data-zh="聯電將資源重新配置到更有價值的方向，例如 22 奈米擴展、特殊製程升級、先進封裝與矽光子。" data-en="UMC redirects resources toward higher-value directions such as 22nm expansion, specialty process upgrades, advanced packaging, and silicon photonics.">聯電將資源重新配置到更有價值的方向，例如 22 奈米擴展、特殊製程升級、先進封裝與矽光子。</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TALENT ══ -->
+  <section class="section-page" id="talent">
+    <div class="section-header">
+      <h2 class="section-title" data-zh="人力職缺" data-en="Talent & Jobs">人力職缺</h2>
+      <p class="section-sub" data-zh="聯華電子主要職缺與所需技能" data-en="UMC Key Job Openings & Required Skills">聯華電子主要職缺與所需技能</p>
+    </div>
+
+    <div class="talent-grid">
+
+      <div class="talent-card">
+        <h4 class="talent-title" data-zh="製程整合工程師" data-en="Process Integration Engineer">製程整合工程師</h4>
+        <div class="talent-divider"></div>
+        <p class="talent-skills-label" data-zh="所需技能" data-en="Required Skills">所需技能</p>
+        <p class="talent-skills" data-zh="具半導體製程與元件知識、良率改善、SPC 監控、問題分析與跨部門溝通能力" data-en="Semiconductor process & device knowledge, yield improvement, SPC monitoring, problem analysis, cross-department communication">具半導體製程與元件知識、良率改善、SPC 監控、問題分析與跨部門溝通能力</p>
+        <div class="talent-salary">
+          <span class="talent-salary-label" data-zh="大概薪資" data-en="Salary Range">大概薪資</span>
+          <span class="talent-salary-value" data-zh="月薪約 4.5 萬～7 萬以上" data-en="~NTD 45K–70K+/mo">月薪約 4.5 萬～7 萬以上</span>
+        </div>
+      </div>
+
+      <div class="talent-card">
+        <h4 class="talent-title" data-zh="光罩工程服務工程師" data-en="Photomask Service Engineer">光罩工程服務工程師</h4>
+        <div class="talent-divider"></div>
+        <p class="talent-skills-label" data-zh="所需技能" data-en="Required Skills">所需技能</p>
+        <p class="talent-skills" data-zh="熟悉光罩製作、黃光製程、SPC 管理、缺陷判定與處理能力" data-en="Familiar with mask fabrication, photolithography, SPC management, defect identification and handling">熟悉光罩製作、黃光製程、SPC 管理、缺陷判定與處理能力</p>
+        <div class="talent-salary">
+          <span class="talent-salary-label" data-zh="大概薪資" data-en="Salary Range">大概薪資</span>
+          <span class="talent-salary-value" data-zh="月薪約 4.5 萬～7 萬以上" data-en="~NTD 45K–70K+/mo">月薪約 4.5 萬～7 萬以上</span>
+        </div>
+      </div>
+
+      <div class="talent-card">
+        <h4 class="talent-title" data-zh="蝕刻製程工程師" data-en="Etch Process Engineer">蝕刻製程工程師</h4>
+        <div class="talent-divider"></div>
+        <p class="talent-skills-label" data-zh="所需技能" data-en="Required Skills">所需技能</p>
+        <p class="talent-skills" data-zh="製程維護、良率提升、製程最適化、半導體製程經驗、可接受輪班" data-en="Process maintenance, yield improvement, process optimization, semiconductor experience, shift work acceptable">製程維護、良率提升、製程最適化、半導體製程經驗、可接受輪班</p>
+        <div class="talent-salary">
+          <span class="talent-salary-label" data-zh="大概薪資" data-en="Salary Range">大概薪資</span>
+          <span class="talent-salary-value" data-zh="月薪約 4.5 萬～7 萬以上" data-en="~NTD 45K–70K+/mo">月薪約 4.5 萬～7 萬以上</span>
+        </div>
+      </div>
+
+      <div class="talent-card">
+        <h4 class="talent-title" data-zh="廠務副工程師" data-en="Facilities Engineer">廠務副工程師</h4>
+        <div class="talent-divider"></div>
+        <p class="talent-skills-label" data-zh="所需技能" data-en="Required Skills">所需技能</p>
+        <p class="talent-skills" data-zh="日常巡檢、監工、值班、設備初步故障排除、系統操作、緊急應變能力" data-en="Daily inspection, supervision, on-call duty, basic equipment troubleshooting, system operation, emergency response">日常巡檢、監工、值班、設備初步故障排除、系統操作、緊急應變能力</p>
+        <div class="talent-salary">
+          <span class="talent-salary-label" data-zh="大概薪資" data-en="Salary Range">大概薪資</span>
+          <span class="talent-salary-value" data-zh="月薪約 4 萬～5.5 萬以上" data-en="~NTD 40K–55K+/mo">月薪約 4 萬～5.5 萬以上</span>
+        </div>
+      </div>
+
+      <div class="talent-card">
+        <h4 class="talent-title" data-zh="IT Engineer" data-en="IT Engineer">IT Engineer</h4>
+        <div class="talent-divider"></div>
+        <p class="talent-skills-label" data-zh="所需技能" data-en="Required Skills">所需技能</p>
+        <p class="talent-skills" data-zh="系統開發與維護、資訊平台建置、程式開發與資料庫操作" data-en="System development & maintenance, IT platform setup, programming and database operations">系統開發與維護、資訊平台建置、程式開發與資料庫操作</p>
+        <div class="talent-salary">
+          <span class="talent-salary-label" data-zh="大概薪資" data-en="Salary Range">大概薪資</span>
+          <span class="talent-salary-value" data-zh="月薪約 4.5 萬～7 萬以上，依經驗而定" data-en="~NTD 45K–70K+/mo, based on experience">月薪約 4.5 萬～7 萬以上，依經驗而定</span>
+        </div>
+      </div>
+
+      <div class="talent-card">
+        <h4 class="talent-title" data-zh="製造課長" data-en="Manufacturing Section Manager">製造課長</h4>
+        <div class="talent-divider"></div>
+        <p class="talent-skills-label" data-zh="所需技能" data-en="Required Skills">所需技能</p>
+        <p class="talent-skills" data-zh="現場管理、人員與設備調度、品質控管、流程改善、溝通與管理能力" data-en="Floor management, personnel & equipment scheduling, quality control, process improvement, communication & management skills">現場管理、人員與設備調度、品質控管、流程改善、溝通與管理能力</p>
+        <div class="talent-salary">
+          <span class="talent-salary-label" data-zh="大概薪資" data-en="Salary Range">大概薪資</span>
+          <span class="talent-salary-value" data-zh="月薪約 6 萬～10 萬以上" data-en="~NTD 60K–100K+/mo">月薪約 6 萬～10 萬以上</span>
+        </div>
+      </div>
+
+      <div class="talent-card">
+        <h4 class="talent-title" data-zh="銷售工程師" data-en="Sales Engineer">銷售工程師</h4>
+        <div class="talent-divider"></div>
+        <p class="talent-skills-label" data-zh="所需技能" data-en="Required Skills">所需技能</p>
+        <p class="talent-skills" data-zh="晶圓代工解決方案銷售、客戶管理、報價與訂單審查、市場分析、簡報與專案管理" data-en="Foundry solution sales, customer management, quotation & order review, market analysis, presentation & project management">晶圓代工解決方案銷售、客戶管理、報價與訂單審查、市場分析、簡報與專案管理</p>
+        <div class="talent-salary">
+          <span class="talent-salary-label" data-zh="大概薪資" data-en="Salary Range">大概薪資</span>
+          <span class="talent-salary-value" data-zh="月薪約 5 萬～8 萬以上" data-en="~NTD 50K–80K+/mo">月薪約 5 萬～8 萬以上</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ QUIZ ══ -->
+  <section class="section-page" id="quiz">
+    <div class="section-header">
+      <h2 class="section-title" data-zh="互動小測驗" data-en="Interactive Quiz">互動小測驗</h2>
+      <p class="section-sub" data-zh="測試你對聯華電子的了解程度" data-en="Test your knowledge of UMC">測試你對聯華電子的了解程度</p>
+    </div>
+    <div class="quiz-wrap" id="quizWrap">
+      <!-- JS renders questions here -->
     </div>
   </section>
 

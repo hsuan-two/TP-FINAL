@@ -766,3 +766,251 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
 
   draw();
 })();
+
+/* ══ 9. GLOBAL CAPACITY HOVER ══ */
+(function () {
+  const DATA = {
+    tw: {
+      zh: { title: '台灣', text: '為研發與主要製造中心，保有技術與人才優勢。' },
+      en: { title: 'Taiwan', text: 'R&D and primary manufacturing center, maintaining technological and talent advantages.' }
+    },
+    us: {
+      zh: { title: '美國布局', text: '與英特爾合作在亞利桑那州推進 12 奈米平台，有助聯電進入北美供應鏈並降低地緣風險。' },
+      en: { title: 'US Presence', text: 'Collaborating with Intel on 12nm in Arizona, helping UMC enter North American supply chains and reduce geopolitical risk.' }
+    },
+    jp: {
+      zh: { title: '日本', text: '透過日本廠區，聯電可切入當地汽車與工業供應鏈，提升客戶黏著度。' },
+      en: { title: 'Japan', text: 'Through Japan fabs, UMC can penetrate local automotive and industrial supply chains, boosting customer stickiness.' }
+    },
+    sg: {
+      zh: { title: '新加坡', text: '新加坡 Fab 12i 持續擴建，承接成熟製程與部分先進封裝布局，成為重要海外產能據點。' },
+      en: { title: 'Singapore', text: 'Fab 12i continues to expand, handling mature processes and some advanced packaging, becoming a key overseas capacity hub.' }
+    }
+  };
+
+  let lang = 'zh';
+  document.getElementById('langBtn')?.addEventListener('click', () => {
+    setTimeout(() => {
+      const s = document.querySelector('[data-zh][data-en]');
+      if (s) lang = s.textContent.trim() === s.dataset.zh ? 'zh' : 'en';
+    }, 60);
+  });
+
+  const tt    = document.getElementById('gcapTooltip');
+  const ttTitle = document.getElementById('gcapTtTitle');
+  const ttText  = document.getElementById('gcapTtText');
+  const wrap  = document.querySelector('.gcap-container');
+
+  document.querySelectorAll('.gcap-node').forEach(node => {
+    const id = node.dataset.id;
+
+    node.addEventListener('mouseenter', e => {
+      if (!tt || !DATA[id]) return;
+      const d = DATA[id][lang];
+      ttTitle.textContent = d.title;
+      ttText.textContent  = d.text;
+      tt.classList.add('show');
+      posTooltip(e, id);
+    });
+    node.addEventListener('mousemove', e => posTooltip(e, id));
+    node.addEventListener('mouseleave', () => tt?.classList.remove('show'));
+  });
+
+  function posTooltip(e, id) {
+    if (!tt || !wrap) return;
+    const wr = wrap.getBoundingClientRect();
+    const tw = tt.offsetWidth || 260, th = tt.offsetHeight || 80;
+    let x, y;
+
+    if (id === 'tw') {
+      x = e.clientX - wr.left - tw / 2;
+      y = e.clientY - wr.top + 16;
+    } else if (id === 'jp') {
+      x = e.clientX - wr.left + 16;
+      y = e.clientY - wr.top - 20;
+    } else if (id === 'us') {
+      x = e.clientX - wr.left - tw - 16;
+      y = e.clientY - wr.top - 20;
+    } else if (id === 'sg') {
+      // Singapore circle is at ~cx=116 in SVG (viewBox 500px wide)
+      // Map to wrap pixel coords: circle left edge ≈ (116-55)/500 * wrapWidth
+      const sgCircleRightFrac = (116 + 55) / 500;
+      const sgX = sgCircleRightFrac * wr.width;
+      x = sgX - tw - 8;
+      if (x < 4) x = 4;
+      y = e.clientY - wr.top - th / 2;
+    } else {
+      x = e.clientX - wr.left + 16;
+      y = e.clientY - wr.top - 20;
+    }
+
+    // Vertical clamp only
+    y = Math.max(4, Math.min(y, wr.height - th - 4));
+
+    tt.style.left = x + 'px';
+    tt.style.top  = y + 'px';
+  }
+})();
+
+/* ══ 10. QUIZ ══ */
+(function () {
+  'use strict';
+
+  const QUESTIONS = [
+    {
+      zh: { q: '聯電目前最專注的製程節點範圍是？',
+            opts: ['3nm 以下先進製程', '28nm 以上成熟製程', '10nm 到 20nm 之間', '7nm FinFET'],
+            correct: 1,
+            explain: '聯電策略性地聚焦在 28nm 以上的成熟製程，強調穩定供應與成本效率，而非追求最先進節點。' },
+      en: { q: 'What process node range does UMC currently focus on?',
+            opts: ['Sub-3nm advanced nodes', '28nm and above mature nodes', '10nm to 20nm range', '7nm FinFET'],
+            correct: 1,
+            explain: 'UMC strategically focuses on mature processes at 28nm and above, emphasizing stable supply and cost efficiency rather than the most advanced nodes.' }
+    },
+    {
+      zh: { q: '聯電與哪家公司合作開發 12nm FinFET 製程？',
+            opts: ['三星', 'AMD', '英特爾', '台積電'],
+            correct: 2,
+            explain: '聯電宣布與英特爾合作在亞利桑那州共同開發 12nm 平台，有助進入北美供應鏈。' },
+      en: { q: 'Which company is UMC collaborating with to develop 12nm FinFET?',
+            opts: ['Samsung', 'AMD', 'Intel', 'TSMC'],
+            correct: 2,
+            explain: 'UMC announced collaboration with Intel to develop a 12nm platform in Arizona, helping enter the North American supply chain.' }
+    },
+    {
+      zh: { q: '聯電在哪一年加入 RE100，宣示 2050 年達成淨零碳排？',
+            opts: ['2015', '2019', '2021', '2024'],
+            correct: 2,
+            explain: '聯電於 2021 年加入 RE100 再生能源倡議，承諾在 2050 年前達成 100% 使用再生電力與淨零碳排目標。' },
+      en: { q: 'In which year did UMC join RE100 and pledge net-zero carbon by 2050?',
+            opts: ['2015', '2019', '2021', '2024'],
+            correct: 2,
+            explain: 'UMC joined the RE100 renewable energy initiative in 2021, committing to 100% renewable electricity and net-zero carbon emissions by 2050.' }
+    },
+    {
+      zh: { q: '聯電六力分析中，哪一項顯示其競爭壓力最來自同業而非新進者？',
+            opts: ['替代品威脅高', '顧客議價力強', '現有競爭者激烈', '新進者威脅低'],
+            correct: 2,
+            explain: '聯電主要面對中芯國際、華虹半導體、格羅方德與世界先進等成熟製程同業的競爭，來自現有競爭者的壓力最直接。' },
+      en: { q: 'In UMC\'s Six Forces analysis, which force most directly drives competitive pressure from existing players rather than new entrants?',
+            opts: ['High threat of substitutes', 'Strong buyer bargaining power', 'Intense rivalry among existing competitors', 'Low threat of new entrants'],
+            correct: 2,
+            explain: 'UMC faces competition primarily from mature-node peers like SMIC, Hua Hong, GlobalFoundries, and Vanguard — making rivalry among existing competitors the most direct pressure.' }
+    },
+    {
+      zh: { q: 'UMC 的英文全名是？',
+            opts: ['Universal Microchip Corporation', 'United Microelectronics Corp.', 'Unified Memory Company', 'Ultra Manufacturing Center'],
+            correct: 1,
+            explain: 'UMC 代表 United Microelectronics Corp.（聯華電子股份有限公司），1980 年成立，是台灣首家民營積體電路公司。' },
+      en: { q: 'What does UMC stand for?',
+            opts: ['Universal Microchip Corporation', 'United Microelectronics Corp.', 'Unified Memory Company', 'Ultra Manufacturing Center'],
+            correct: 1,
+            explain: 'UMC stands for United Microelectronics Corp., founded in 1980 as Taiwan\'s first private integrated circuit company.' }
+    },
+    {
+      zh: { q: '聯電在新加坡的哪個廠區持續擴建中？',
+            opts: ['Fab 10', 'Fab 11', 'Fab 12i', 'Fab 8'],
+            correct: 2,
+            explain: '聯電新加坡 Fab 12i 持續擴建，承接成熟製程與部分先進封裝布局，是重要的海外產能據點。' },
+      en: { q: 'Which Singapore fab is UMC continuously expanding?',
+            opts: ['Fab 10', 'Fab 11', 'Fab 12i', 'Fab 8'],
+            correct: 2,
+            explain: 'UMC\'s Singapore Fab 12i is continuously expanding, handling mature processes and some advanced packaging as a key overseas capacity hub.' }
+    },
+  ];
+
+  let lang = 'zh';
+  let submitted = false;
+
+  function getLang() {
+    const s = document.querySelector('[data-zh][data-en]');
+    if (s) return s.textContent.trim() === s.dataset.zh ? 'zh' : 'en';
+    return 'zh';
+  }
+
+  function render() {
+    const wrap = document.getElementById('quizWrap');
+    if (!wrap) return;
+    lang = getLang();
+    submitted = false;
+    wrap.innerHTML = '';
+
+    QUESTIONS.forEach((q, qi) => {
+      const d = q[lang];
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.innerHTML = `
+        <p class="quiz-q-text"><span class="quiz-q-num">Q${qi+1}.</span>${d.q}</p>
+        <div class="quiz-options">
+          ${d.opts.map((opt, oi) => `
+            <label class="quiz-option" data-qi="${qi}" data-oi="${oi}">
+              <input type="radio" name="q${qi}" value="${oi}">
+              <span class="quiz-option-dot"></span>
+              <span>${opt}</span>
+            </label>
+          `).join('')}
+        </div>
+        <div class="quiz-explain" id="explain-${qi}">${d.explain}</div>
+      `;
+      wrap.appendChild(div);
+    });
+
+    // Click options
+    wrap.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (submitted) return;
+        const qi = opt.dataset.qi;
+        wrap.querySelectorAll(`.quiz-option[data-qi="${qi}"]`).forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        opt.querySelector('input').checked = true;
+      });
+    });
+
+    // Submit button
+    const submitWrap = document.createElement('div');
+    submitWrap.className = 'quiz-submit-wrap';
+    submitWrap.innerHTML = `
+      <button class="quiz-submit" id="quizSubmit" data-zh="提交答案" data-en="Submit Answers">提交答案</button>
+      <div class="quiz-score" id="quizScore"></div>
+      <button class="quiz-retry" id="quizRetry" data-zh="重新作答" data-en="Try Again">重新作答</button>
+    `;
+    wrap.appendChild(submitWrap);
+
+    document.getElementById('quizSubmit').addEventListener('click', () => {
+      let score = 0;
+      QUESTIONS.forEach((q, qi) => {
+        const d = q[lang];
+        const selected = wrap.querySelector(`.quiz-option[data-qi="${qi}"].selected`);
+        const opts = wrap.querySelectorAll(`.quiz-option[data-qi="${qi}"]`);
+        opts.forEach(o => {
+          o.classList.add('disabled');
+          const oi = parseInt(o.dataset.oi);
+          if (oi === d.correct) o.classList.add('show-correct');
+        });
+        if (selected) {
+          const selectedOi = parseInt(selected.dataset.oi);
+          if (selectedOi === d.correct) { selected.classList.add('correct'); score++; }
+          else selected.classList.add('wrong');
+        }
+        document.getElementById(`explain-${qi}`).classList.add('show');
+      });
+      submitted = true;
+      const scoreEl = document.getElementById('quizScore');
+      const total = QUESTIONS.length;
+      scoreEl.textContent = lang === 'zh'
+        ? `你答對了 ${score} / ${total} 題 ${score === total ? '🎉 滿分！' : score >= total*0.6 ? '👍 不錯！' : '💪 再試一次！'}`
+        : `You got ${score} / ${total} correct ${score === total ? '🎉 Perfect!' : score >= total*0.6 ? '👍 Good job!' : '💪 Try again!'}`;
+      scoreEl.classList.add('show');
+      document.getElementById('quizSubmit').disabled = true;
+      document.getElementById('quizRetry').classList.add('show');
+    });
+
+    document.getElementById('quizRetry').addEventListener('click', render);
+  }
+
+  document.getElementById('langBtn')?.addEventListener('click', () => {
+    setTimeout(render, 80);
+  });
+
+  render();
+})();
