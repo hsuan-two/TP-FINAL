@@ -1246,10 +1246,27 @@
 
   <!-- ══ FOOTER ══ -->
   <footer class="footer">
-    <span data-zh="1142 國際策略管理｜授課教師：梅筱珍" data-en="International Strategic Management｜Prof. Mei Hsiao-Chen">
-      1142 國際策略管理｜授課教師：梅筱珍
-    </span>
+    <div class="footer-inner">
+      <span data-zh="1142 國際策略管理｜授課教師：梅筱珍" data-en="International Strategic Management｜Prof. Mei Hsiao-Chen">
+        1142 國際策略管理｜授課教師：梅筱珍
+      </span>
+      <button class="student-pill" id="studentPill">授課學生：王懿萱</button>
+    </div>
   </footer>
+
+  <!-- 學生卡片 -->
+  <div class="profile-overlay" id="profileOverlay">
+    <div class="profile-card" id="profileCard">
+      <button class="profile-close" id="profileClose">✕</button>
+      <img src="photo.jpg" alt="王懿萱" class="profile-photo"/>
+      <div class="profile-info">
+        <h3 class="profile-name">王懿萱</h3>
+        <p class="profile-role" data-zh="授課學生" data-en="Student">授課學生</p>
+        <p class="profile-desc" data-zh="就讀於暨南大學國際企業學系，負責本網頁的分析框架規劃、內容撰寫與前端設計製作。" data-en="Student at National Chi Nan University, Department of International Business, responsible for analysis framework planning, content writing, and front-end design for this website.">就讀於暨南大學國際企業學系，負責本網頁的分析框架規劃、內容撰寫與前端設計製作。</p>
+        <p class="profile-ai" data-zh="本專案由 Claude AI 協助進行網頁設計與內容生成，並由本人負責資料蒐集、內容審核與策略分析。" data-en="This project was assisted by Claude AI for web design and content generation. Data collection, content review, and strategic analysis were handled personally.">本專案由 Claude AI 協助進行網頁設計與內容生成，並由本人負責資料蒐集、內容審核與策略分析。</p>
+      </div>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>

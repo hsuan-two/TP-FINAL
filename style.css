@@ -2344,3 +2344,117 @@ body {
 }
 .quiz-retry:hover { background: var(--navy); color: #fff; }
 .quiz-retry.show { display: block; }
+
+/* ── Footer student pill ── */
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.student-pill {
+  background: none;
+  border: 1.5px solid var(--muted);
+  color: var(--muted);
+  border-radius: 50px;
+  padding: .25rem .9rem;
+  font-family: 'DM Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s, transform .15s;
+}
+.student-pill:hover {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+  transform: translateY(-1px);
+}
+
+/* ── Profile overlay ── */
+.profile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.profile-overlay.show {
+  display: flex;
+  animation: fadeIn .25s ease;
+}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+.profile-card {
+  position: relative;
+  background: var(--white);
+  border-radius: 20px;
+  width: 340px;
+  max-width: 90vw;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,.3);
+  animation: slideUp .3s cubic-bezier(.4,0,.2,1);
+}
+@keyframes slideUp { from{transform:translateY(30px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+.profile-close {
+  position: absolute;
+  top: .9rem; right: .9rem;
+  background: rgba(0,0,0,.25);
+  border: none;
+  color: #fff;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: .85rem;
+  z-index: 1;
+  transition: background .2s;
+}
+.profile-close:hover { background: rgba(0,0,0,.5); }
+
+.profile-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.profile-info {
+  padding: 1.3rem 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.profile-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--navy);
+  transition: color var(--trans);
+}
+.profile-role {
+  font-family: 'DM Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: .2rem;
+}
+.profile-desc, .profile-ai {
+  font-size: .8rem;
+  line-height: 1.7;
+  color: var(--text);
+  transition: color var(--trans);
+}
+.profile-ai {
+  margin-top: .3rem;
+  padding-top: .7rem;
+  border-top: 1px solid var(--light);
+  color: var(--muted);
+  font-size: .75rem;
+}

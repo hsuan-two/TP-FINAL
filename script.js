@@ -832,13 +832,11 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
       x = e.clientX - wr.left - tw - 16;
       y = e.clientY - wr.top - 20;
     } else if (id === 'sg') {
-      // Singapore circle is at ~cx=116 in SVG (viewBox 500px wide)
-      // Map to wrap pixel coords: circle left edge ≈ (116-55)/500 * wrapWidth
-      const sgCircleRightFrac = (116 + 55) / 500;
-      const sgX = sgCircleRightFrac * wr.width;
-      x = sgX - tw - 8;
-      if (x < 4) x = 4;
-      y = e.clientY - wr.top - th / 2;
+      // Singapore is bottom-left — no room to the left; show tooltip above cursor instead
+      const sgCxFrac = 116 / 500;
+      x = sgCxFrac * wr.width - tw / 2;  // horizontally centred on circle
+      x = Math.max(4, x);
+      y = e.clientY - wr.top - th - 16;  // above cursor
     } else {
       x = e.clientX - wr.left + 16;
       y = e.clientY - wr.top - 20;
@@ -1013,4 +1011,20 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
   });
 
   render();
+})();
+
+/* ══ 11. PROFILE CARD ══ */
+(function () {
+  const pill    = document.getElementById('studentPill');
+  const overlay = document.getElementById('profileOverlay');
+  const closeBtn= document.getElementById('profileClose');
+
+  pill?.addEventListener('click', () => overlay?.classList.add('show'));
+  closeBtn?.addEventListener('click', () => overlay?.classList.remove('show'));
+  overlay?.addEventListener('click', e => {
+    if (e.target === overlay) overlay.classList.remove('show');
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') overlay?.classList.remove('show');
+  });
 })();
