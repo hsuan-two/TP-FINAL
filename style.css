@@ -1744,3 +1744,123 @@ body {
   color: var(--muted);
   transition: color var(--trans);
 }
+
+/* ══ COMPLEMENTARY RESOURCES ══ */
+#resource-comp { background: var(--offwhite); }
+
+.comp-res-intro {
+  max-width: 860px;
+  margin: 0 auto 2.5rem;
+  font-size: .9rem;
+  line-height: 1.85;
+  color: var(--text);
+  text-align: center;
+  transition: color var(--trans);
+}
+
+.compres-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.compres-card {
+  border-radius: 14px;
+  padding: 1.3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  border: 1.5px solid var(--light);
+  box-shadow: 0 3px 14px rgba(11,37,69,.07);
+  transition: background var(--trans), border-color var(--trans), transform .2s, box-shadow .2s;
+}
+.compres-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(11,37,69,.13);
+}
+
+/* Intel cards: 深藍 */
+.compres-intel {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+.compres-intel .compres-title { color: #fff; }
+.compres-intel .compres-text  { color: rgba(255,255,255,.75); }
+
+/* UMC cards: 白底 */
+.compres-umc {
+  background: var(--white);
+}
+.compres-umc .compres-title { color: var(--navy); }
+.compres-umc .compres-text  { color: var(--muted); }
+
+/* 第五格置中 */
+.compres-center {
+  grid-column: 1 / -1;
+  width: calc(50% - .5rem);
+  margin: 0 auto;
+}
+
+.compres-title {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: color var(--trans);
+}
+.compres-text {
+  font-size: .8rem;
+  line-height: 1.75;
+  transition: color var(--trans);
+}
+
+@media (max-width: 600px) {
+  .compres-grid { grid-template-columns: 1fr; }
+  .compres-center { width: 100%; }
+}
+
+/* ── Complementary resources intro ── */
+.comp-res-intro-wrap {
+  max-width: 860px;
+  margin: 0 auto 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.comp-res-intro-line {
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--muted);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  transition: color var(--trans);
+}
+.comp-res-highlight {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  background: var(--navy);
+  border-radius: 50px;
+  padding: .5rem 1.4rem;
+}
+.comp-res-highlight-label {
+  font-family: 'DM Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+.comp-res-highlight-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .04em;
+}
