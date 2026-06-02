@@ -2608,3 +2608,40 @@ body {
 [data-theme="dark"] .quiz-explain    { background: #162840; color: #b0cce6; }
 [data-theme="dark"] .quiz-retry      { border-color: #4a7aaa; color: #b0cce6; }
 [data-theme="dark"] .quiz-retry:hover { background: #1e3a5f; color: #dce8f5; }
+
+/* ── BMC back dark mode ── */
+[data-theme="dark"] .bmc-back { background: #0f2236 !important; border-color: #2a4a6a; }
+[data-theme="dark"] .bmc-back-title { color: #dce8f5; }
+[data-theme="dark"] .bmc-back-text  { color: #90b4d4; }
+
+/* ── Navbar dark mode ── */
+[data-theme="dark"] .logo-umc  { color: #dce8f5; background: none; }
+[data-theme="dark"] .logo-name { color: #7a9bb8; }
+[data-theme="dark"] .btn-lang,
+[data-theme="dark"] .btn-theme {
+  background: #162840;
+  border-color: #2a4a6a;
+  color: #dce8f5;
+}
+[data-theme="dark"] .btn-lang:hover,
+[data-theme="dark"] .btn-theme:hover {
+  background: #dce8f5;
+  border-color: #dce8f5;
+  color: #0d1b2a;
+}
+
+/* ── Navbar background dark mode ── */
+[data-theme="dark"] .navbar {
+  background: #0d1b2a;
+  border-bottom-color: #162840;
+  box-shadow: 0 2px 16px rgba(0,0,0,.3);
+}
+[data-theme="dark"] .hamburger span { background: #dce8f5; }
+[data-theme="dark"] .hamburger:hover { background: #162840; }
+
+/* ── Fix nav-logo white box in dark mode ── */
+[data-theme="dark"] .nav-logo { background: transparent; }
+[data-theme="dark"] .logo-umc { background: transparent; color: #dce8f5; }
+[data-theme="dark"] .logo-name { background: transparent; color: #7a9bb8; }
+
+[data-theme="dark"] .menv-right-title { color: #dce8f5; }
