@@ -2698,3 +2698,107 @@ body {
     margin-top: .5rem;
   }
 }
+
+/* ══ MOBILE: resource-alloc ══ */
+@media (max-width: 768px) {
+
+  .resalloc-rows-wrap {
+    gap: 1.2rem;
+  }
+
+  /* Each row: vertical stack */
+  .resalloc-row-full {
+    flex-direction: column;
+    align-items: stretch;
+    gap: .6rem;
+  }
+
+  /* Resource card: full width */
+  .resalloc-card {
+    flex: none;
+    width: 100%;
+  }
+
+  /* Arrow: rotate to point down */
+  .resalloc-row-full > .resalloc-arrow {
+    text-align: center;
+    transform: rotate(90deg);
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--navy2);
+  }
+
+  /* VRIN + desc side by side */
+  .vrin-card {
+    width: auto;
+    flex: 0 0 auto;
+  }
+
+  .resalloc-row-full {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* After first arrow, VRIN and desc go side by side */
+  .resalloc-row-full .vrin-card,
+  .resalloc-row-full .vrin-desc {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .resalloc-row-full .vrin-card {
+    flex: 0 0 auto;
+    max-width: 140px;
+  }
+
+  /* Second arrow (between VRIN and desc) stays horizontal */
+  .resalloc-row-full .resalloc-arrow:last-of-type {
+    transform: none;
+    align-self: center;
+  }
+
+  /* Title */
+  .resalloc-wrap {
+    flex-direction: column;
+  }
+  .resalloc-main-title {
+    margin-bottom: .5rem;
+  }
+}
+
+/* ══ MOBILE: core competence canvas ══ */
+@media (max-width: 768px) {
+  #coreCanvas {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1;
+  }
+}
+
+/* ══ MOBILE: market-strategy — fix overlap ══ */
+@media (max-width: 768px) {
+  #market-strategy .comp-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  #market-strategy .comp-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  #market-strategy .comp-right {
+    width: 100%;
+    position: static;
+    order: 3;
+  }
+  #market-strategy .comp-analysis-note {
+    order: 2;
+    position: static;
+    width: 100%;
+  }
+  #market-strategy .comp-cards-wrap {
+    order: 1;
+  }
+}
