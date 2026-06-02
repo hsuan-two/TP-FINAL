@@ -399,11 +399,16 @@
       center:[22,30], zoom:2,
       zoomControl: isMobile, scrollWheelZoom:false,
       dragging: isMobile, touchZoom: isMobile, doubleClickZoom:false,
-      boxZoom:false, keyboard:false, attributionControl:false
+      boxZoom:false, keyboard:false, attributionControl:false,
+      worldCopyJump: false
     });
 
+    if (isMobile) {
+      map.setMaxBounds([[-90, -180], [90, 180]]);
+    }
+
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      subdomains:'abcd', maxZoom:19
+      subdomains:'abcd', maxZoom:19, noWrap: true
     }).addTo(map);
 
     SITES.forEach(s => {
@@ -1039,4 +1044,41 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') overlay?.classList.remove('show');
   });
+})();
+
+/* ══ MOBILE: dismiss tooltips on second tap ══ */
+(function () {
+  if (window.innerWidth > 768) return;
+
+  // All tooltip/popup elements to watch
+  const tooltips = [
+    document.getElementById('gcapTooltip'),
+    document.getElementById('tlTooltip'),
+  ];
+
+  document.addEventListener('touchstart', e => {
+    tooltips.forEach(tt => {
+      if (!tt) return;
+      // If tooltip is visible and tap is outside it → hide
+      if (tt.classList.contains('show') && !tt.contains(e.target)) {
+        tt.classList.remove('show');
+      }
+    });
+
+    // Leaflet tooltips
+    document.querySelectorAll('.leaflet-tooltip').forEach(lt => {
+      if (!lt.contains(e.target) && !e.target.closest('.leaflet-marker-icon')) {
+        lt.style.display = 'none';
+        setTimeout(() => lt.style.display = '', 100);
+      }
+    });
+
+    // gcap-tooltip specifically
+    const gcap = document.getElementById('gcapTooltip');
+    if (gcap && gcap.classList.contains('show')) {
+      if (!gcap.contains(e.target) && !e.target.closest('.gcap-node')) {
+        gcap.classList.remove('show');
+      }
+    }
+  }, { passive: true });
 })();
