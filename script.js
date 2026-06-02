@@ -393,10 +393,12 @@
     const el = document.getElementById('worldMap');
     if (!el || !window.L) return;
 
+    const isMobile = window.innerWidth <= 768;
+
     const map = L.map('worldMap', {
       center:[22,30], zoom:2,
-      zoomControl:false, scrollWheelZoom:false,
-      dragging:false, touchZoom:false, doubleClickZoom:false,
+      zoomControl: isMobile, scrollWheelZoom:false,
+      dragging: isMobile, touchZoom: isMobile, doubleClickZoom:false,
       boxZoom:false, keyboard:false, attributionControl:false
     });
 

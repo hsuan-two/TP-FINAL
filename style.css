@@ -2645,3 +2645,56 @@ body {
 [data-theme="dark"] .logo-name { background: transparent; color: #7a9bb8; }
 
 [data-theme="dark"] .menv-right-title { color: #dce8f5; }
+
+/* ══ MOBILE: market-strategy fixes ══ */
+@media (max-width: 768px) {
+
+  /* 卡片改成 static 佈局，高度自適應內容 */
+  .comp-cards-track {
+    position: static;
+    min-height: unset;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .comp-card {
+    position: static;
+    inset: unset;
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+  }
+  .comp-card.comp-card-active {
+    opacity: 1;
+    display: flex;
+    pointer-events: auto;
+  }
+
+  /* 左右欄改直排 */
+  .comp-card-row {
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  /* 說明文字在卡片下方，圖表在說明文字下方 */
+  .comp-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .comp-wrap {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .comp-right {
+    width: 100%;
+  }
+  .scatter-wrap {
+    width: 100%;
+  }
+
+  /* 說明文字不被圖表蓋住 */
+  .comp-analysis-note {
+    position: static;
+    margin-top: .5rem;
+  }
+}
