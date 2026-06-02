@@ -744,16 +744,36 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
     return idx;
   }
 
-  canvas.addEventListener('mousemove', e => {
+  function getCoordsFromEvent(e) {
     const rect = canvas.getBoundingClientRect();
-    const mx = (e.clientX - rect.left);
-    const my = (e.clientY - rect.top);
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    // Scale from CSS display size to canvas internal size
+    const scaleX = canvas.width  / DPR / rect.width;
+    const scaleY = canvas.height / DPR / rect.height;
+    return {
+      mx: (clientX - rect.left) * scaleX,
+      my: (clientY - rect.top)  * scaleY,
+    };
+  }
+
+  canvas.addEventListener('mousemove', e => {
+    const { mx, my } = getCoordsFromEvent(e);
     const idx = getSegAt(mx, my);
-    if (idx !== hovered) {
-      hovered = idx;
-      draw();
-    }
+    if (idx !== hovered) { hovered = idx; draw(); }
   });
+
+  canvas.addEventListener('touchstart', e => {
+    const { mx, my } = getCoordsFromEvent(e);
+    const idx = getSegAt(mx, my);
+    hovered = idx;
+    draw();
+    e.preventDefault();
+  }, { passive: false });
+
+  canvas.addEventListener('touchend', () => {
+    // Keep segment highlighted until next tap
+  }, { passive: true });
 
   canvas.addEventListener('mouseleave', () => {
     hovered = -1; draw();

@@ -2802,3 +2802,17 @@ body {
     order: 1;
   }
 }
+
+/* ══ MOBILE: VRIN card full width + centred ══ */
+@media (max-width: 768px) {
+  .vrin-card {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .resalloc-row-full .vrin-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
