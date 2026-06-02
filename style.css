@@ -1889,7 +1889,7 @@ body {
 
 .gcap-tooltip {
   display: none;
-  position: absolute;
+  position: fixed;
   background: var(--navy);
   color: #fff;
   border-radius: 12px;
@@ -1897,7 +1897,7 @@ body {
   width: 260px;
   box-shadow: 0 8px 24px rgba(11,37,69,.3);
   pointer-events: none;
-  z-index: 10;
+  z-index: 9999;
   transition: background var(--trans);
 }
 .gcap-tooltip.show { display: block; }
@@ -2458,3 +2458,153 @@ body {
   color: var(--muted);
   font-size: .75rem;
 }
+
+/* ══ DARK MODE FIXES ══ */
+
+/* UMC hero title */
+[data-theme="dark"] .hero-title,
+[data-theme="dark"] .hero-sub { color: #dce8f5; }
+[data-theme="dark"] .ht-umc  { color: #dce8f5; background: none; }
+[data-theme="dark"] .ht-full { color: #90b4d4; }
+
+/* Navbar links & hamburger */
+[data-theme="dark"] .nav-logo,
+[data-theme="dark"] .hamburger span { color: #dce8f5; background: #dce8f5; }
+[data-theme="dark"] .lang-btn,
+[data-theme="dark"] .theme-btn { color: #dce8f5; border-color: #2a4a6a; }
+
+/* Sidemenu */
+[data-theme="dark"] .sidemenu { background: #0d1b2a; }
+[data-theme="dark"] .smlink,
+[data-theme="dark"] .smgroup-title span { color: #dce8f5; }
+[data-theme="dark"] .smlink:hover { background: #162840; }
+
+/* Section titles */
+[data-theme="dark"] .section-title { color: #dce8f5; }
+[data-theme="dark"] .section-sub   { color: #90b4d4; }
+[data-theme="dark"] .panel-title   { color: #dce8f5; }
+
+/* Org / fin panel headers */
+[data-theme="dark"] .orgfin-wrap .section-title,
+[data-theme="dark"] .panel-header .section-title { color: #dce8f5; }
+
+/* KPI values & labels */
+[data-theme="dark"] .kpi-num,
+[data-theme="dark"] .kpi-value { color: #dce8f5; }
+[data-theme="dark"] .kpi-label { color: #90b4d4; }
+
+/* Process bars labels */
+[data-theme="dark"] .process-label,
+[data-theme="dark"] .process-pct { color: #dce8f5; }
+
+/* Financial highlights */
+[data-theme="dark"] .fin-highlight-text { color: #dce8f5; }
+[data-theme="dark"] .fin-highlight-label { color: #90b4d4; }
+
+/* Market env section: SVG icons + card titles */
+[data-theme="dark"] .market-icon { color: #4a9edd; }
+[data-theme="dark"] .market-card-title { color: #dce8f5; }
+[data-theme="dark"] .trend-title { color: #dce8f5; }
+[data-theme="dark"] .trend-item  { color: #b0cce6; }
+
+/* BMC section title */
+[data-theme="dark"] .bmc-section .section-title { color: #dce8f5; }
+
+/* Dynamic competition section title */
+[data-theme="dark"] #market-strategy .section-title { color: #dce8f5; }
+[data-theme="dark"] .comp-chart-title { color: #dce8f5; }
+
+/* Scatter chart axis labels */
+[data-theme="dark"] .scatter-axis-label { fill: #b0cce6; }
+[data-theme="dark"] .scatter-arrow      { fill: #4a7aaa; opacity: .7; }
+[data-theme="dark"] .scatter-axis       { stroke: #4a7aaa; }
+[data-theme="dark"] .scatter-company-name { fill: #dce8f5; }
+[data-theme="dark"] .scatter-company-sub  { fill: #7a9bb8; }
+
+/* ── Additional dark mode fixes (exact class names) ── */
+
+/* Financial highlights */
+[data-theme="dark"] .highlights-title { color: #dce8f5; }
+[data-theme="dark"] .highlight-item strong { color: #dce8f5; }
+[data-theme="dark"] .highlight-item span   { color: #90b4d4; }
+[data-theme="dark"] .hl-icon { color: #4a9edd; }
+
+/* Process bar labels & percentages */
+[data-theme="dark"] .process-label { color: #dce8f5; }
+[data-theme="dark"] .process-pct   { color: #dce8f5; }
+
+/* Market env cards */
+[data-theme="dark"] .menv-card-title { color: #dce8f5; }
+[data-theme="dark"] .menv-card svg path,
+[data-theme="dark"] .menv-card svg circle,
+[data-theme="dark"] .menv-card svg rect,
+[data-theme="dark"] .menv-card svg polyline { stroke: #4a9edd; }
+
+/* Market env trends */
+[data-theme="dark"] .menv-trend-title { color: #dce8f5; }
+[data-theme="dark"] .menv-trend-text  { color: #90b4d4; }
+[data-theme="dark"] .menv-trend-dot   { background: #4a9edd; }
+
+/* Section title for dynamic competition page */
+[data-theme="dark"] #market-strategy .section-title,
+[data-theme="dark"] #market-strategy .section-sub { color: #dce8f5; }
+[data-theme="dark"] .comp-chart-title { color: #dce8f5; }
+
+/* PLC label */
+[data-theme="dark"] .plc-label { color: #dce8f5; }
+[data-theme="dark"] .plc-stage-label { color: #90b4d4; }
+
+/* Sidemenu large group titles */
+[data-theme="dark"] .smgroup-title { color: #dce8f5; }
+[data-theme="dark"] .smgroup-arrow { color: #7a9bb8; }
+
+/* Hero UMC text */
+[data-theme="dark"] .hero-umc     { color: #dce8f5; }
+[data-theme="dark"] .hero-name-zh { color: #b0cce6; }
+
+/* ══ DARK MODE FIXES — BATCH 2 ══ */
+
+/* 競爭者分析卡片標題（科技策略、市場位置、商業策略）*/
+[data-theme="dark"] .comp-card-title { color: #dce8f5; }
+[data-theme="dark"] .comp-col-name   { color: #90b4d4; }
+
+/* 六力分析方框標題 */
+[data-theme="dark"] .sf-box-title { color: #dce8f5; }
+[data-theme="dark"] .sf-box { background: #0f2236; border-color: #1e3a5f; }
+
+/* 核心資源與競爭優勢 — 頁面大標 + VRIN */
+[data-theme="dark"] .resalloc-main-title { color: #dce8f5; }
+[data-theme="dark"] .vrin-letter { color: #dce8f5; }
+[data-theme="dark"] .vrin-label  { color: #dce8f5; }
+[data-theme="dark"] .vrin-card   { background: #0f2236; border-color: #2a4a6a; }
+[data-theme="dark"] .vrin-card:hover .vrin-letter,
+[data-theme="dark"] .vrin-card:hover .vrin-label { color: #dce8f5; }
+
+/* 互補性資源 — UMC 卡片小標 */
+[data-theme="dark"] .compres-umc { background: #0f2236; border-color: #1e3a5f; }
+[data-theme="dark"] .compres-umc .compres-title { color: #dce8f5; }
+[data-theme="dark"] .compres-umc .compres-text  { color: #7a9bb8; }
+
+/* 防禦性長約 / 次世代技術 — 右側標題 */
+[data-theme="dark"] .nextgen-right .nextgen-title { color: #dce8f5; }
+[data-theme="dark"] .nextgen-right .nextgen-card  { background: #0f2236; border-color: #1e3a5f; }
+[data-theme="dark"] .nextgen-right .nextgen-tag   { background: #1a4a7a; }
+[data-theme="dark"] .nextgen-right .nextgen-text  { color: #7a9bb8; }
+
+/* 人力職缺 — 職稱、薪資 */
+[data-theme="dark"] .talent-card   { background: #0f2236; border-color: #1e3a5f; }
+[data-theme="dark"] .talent-title  { color: #dce8f5; }
+[data-theme="dark"] .talent-salary-value { color: #dce8f5; }
+[data-theme="dark"] .talent-salary-label { color: #7a9bb8; }
+[data-theme="dark"] .talent-skills-label { color: #7a9bb8; }
+[data-theme="dark"] .talent-divider      { background: #1e3a5f; }
+
+/* 互動測驗 — 題目文字 */
+[data-theme="dark"] .quiz-question   { background: #0f2236; border-color: #1e3a5f; }
+[data-theme="dark"] .quiz-q-text     { color: #dce8f5; }
+[data-theme="dark"] .quiz-option     { background: #162840; border-color: #1e3a5f; color: #b0cce6; }
+[data-theme="dark"] .quiz-option:hover:not(.disabled) { background: #1e3a5f; border-color: #4a7aaa; }
+[data-theme="dark"] .quiz-score      { color: #dce8f5; }
+[data-theme="dark"] .quiz-explain    { background: #162840; color: #b0cce6; }
+[data-theme="dark"] .quiz-retry      { border-color: #4a7aaa; color: #b0cce6; }
+[data-theme="dark"] .quiz-retry:hover { background: #1e3a5f; color: #dce8f5; }

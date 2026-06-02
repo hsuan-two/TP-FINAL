@@ -817,33 +817,43 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
   });
 
   function posTooltip(e, id) {
-    if (!tt || !wrap) return;
-    const wr = wrap.getBoundingClientRect();
-    const tw = tt.offsetWidth || 260, th = tt.offsetHeight || 80;
+    if (!tt) return;
+    const TW = 260;
+    const TH = tt.offsetHeight || 90;
+    const vw = window.innerWidth, vh = window.innerHeight;
     let x, y;
 
     if (id === 'tw') {
-      x = e.clientX - wr.left - tw / 2;
-      y = e.clientY - wr.top + 16;
-    } else if (id === 'jp') {
-      x = e.clientX - wr.left + 16;
-      y = e.clientY - wr.top - 20;
+      // Taiwan: below cursor, centred
+      x = e.clientX - TW / 2;
+      y = e.clientY + 16;
     } else if (id === 'us') {
-      x = e.clientX - wr.left - tw - 16;
-      y = e.clientY - wr.top - 20;
-    } else if (id === 'sg') {
-      // Singapore is bottom-left — no room to the left; show tooltip above cursor instead
-      const sgCxFrac = 116 / 500;
-      x = sgCxFrac * wr.width - tw / 2;  // horizontally centred on circle
-      x = Math.max(4, x);
-      y = e.clientY - wr.top - th - 16;  // above cursor
+      // US: left of cursor
+      x = e.clientX - TW - 16;
+      y = e.clientY - 20;
+    } else if (id === 'jp') {
+      // Japan: right of cursor
+      x = e.clientX + 16;
+      y = e.clientY - 20;
     } else {
-      x = e.clientX - wr.left + 16;
-      y = e.clientY - wr.top - 20;
+      // Singapore: LEFT of circle — calculate circle's actual screen position
+      const svgEl = document.querySelector('#growth-global .gcap-svg');
+      if (svgEl) {
+        const sr = svgEl.getBoundingClientRect();
+        const scale = sr.width / 500;                    // viewBox width = 500
+        const circleLeftEdge = sr.left + (116 - 55) * scale;
+        const circleCenterY  = sr.top  + 318 * scale * (420 / 500);
+        x = circleLeftEdge - TW - 12;
+        y = circleCenterY - TH / 2;
+      } else {
+        x = e.clientX - TW - 16;
+        y = e.clientY - TH / 2;
+      }
     }
 
-    // Vertical clamp only
-    y = Math.max(4, Math.min(y, wr.height - th - 4));
+    // Clamp to viewport
+    x = Math.max(8, Math.min(x, vw - TW - 8));
+    y = Math.max(8, Math.min(y, vh - TH - 8));
 
     tt.style.left = x + 'px';
     tt.style.top  = y + 'px';
