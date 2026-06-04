@@ -2816,3 +2816,46 @@ body {
     max-width: 100%;
   }
 }
+
+/* ══ MOBILE: dynamic capability ══ */
+@media (max-width: 768px) {
+  .dynamo-wrap { flex-direction: column; align-items: center; gap: 1.5rem; }
+
+  .dynamo-diagram { width: 300px; height: 300px; }
+  .dynamo-circle  { width: 130px; height: 130px; padding: .7rem; }
+  .dynamo-center  { width: 95px; height: 95px; }
+  .dynamo-center span { font-size: .72rem; }
+  .dynamo-label   { font-size: .78rem; }
+
+  /* Hide desc text inside circles on mobile — show below instead */
+  .dynamo-desc { display: none; }
+
+  /* Description list below diagram */
+  .dynamo-mobile-descs {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    width: 100%;
+    max-width: 360px;
+  }
+  .dynamo-mobile-desc {
+    border-radius: 10px;
+    padding: .75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+  .dynamo-mobile-desc-title {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: .85rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .dynamo-mobile-desc-text {
+    font-size: .76rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,.78);
+  }
+}
+/* Desktop: hide mobile descs */
+@media (min-width: 769px) { .dynamo-mobile-descs { display: none; } }
