@@ -470,7 +470,16 @@
       }, 60);
     });
 
-    setTimeout(() => map.invalidateSize(), 400);
+    setTimeout(() => map.invalidateSize(), 200);
+    setTimeout(() => map.invalidateSize(), 600);
+    setTimeout(() => map.invalidateSize(), 1200);
+
+    // Use ResizeObserver for most reliable size fix
+    if (window.ResizeObserver) {
+      const ro = new ResizeObserver(() => map.invalidateSize());
+      ro.observe(el);
+    }
+    window.addEventListener('resize', () => map.invalidateSize());
   }
 
   if (window.L) initMap();
@@ -1101,6 +1110,17 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
 (function () {
   if (window.innerWidth > 768) return;
 
+  function resetTimelineCircles() {
+    const svg = document.getElementById('timelineSvg');
+    if (!svg) return;
+    const navyFill = getComputedStyle(document.documentElement).getPropertyValue('--navy').trim() || '#0b2545';
+    svg.querySelectorAll('circle[data-active="1"]').forEach(c => {
+      c.setAttribute('r', '30');
+      c.setAttribute('fill', navyFill);
+      c.removeAttribute('data-active');
+    });
+  }
+
   document.addEventListener('touchstart', e => {
     // gcap-tooltip: dismiss only if tapping outside both tooltip AND its trigger nodes
     const gcap = document.getElementById('gcapTooltip');
@@ -1110,10 +1130,14 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
       if (!onNode && !onTooltip) gcap.classList.remove('show');
     }
 
-    // timeline tooltip
-    const tl = document.getElementById('tlTooltip');
+    // timeline tooltip + circle reset
+    const tl  = document.getElementById('tlTooltip');
+    const svg = document.getElementById('timelineSvg');
     if (tl && tl.classList.contains('show') && !tl.contains(e.target)) {
-      tl.classList.remove('show');
+      if (!svg || !svg.contains(e.target)) {
+        tl.classList.remove('show');
+        resetTimelineCircles();
+      }
     }
 
     // Leaflet map tooltips
