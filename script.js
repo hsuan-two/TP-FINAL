@@ -1066,39 +1066,31 @@ document.querySelectorAll('.bmc-cell').forEach(cell => {
   });
 })();
 
-/* ══ MOBILE: dismiss tooltips on second tap ══ */
+/* ══ MOBILE: dismiss tooltips on tap outside ══ */
 (function () {
   if (window.innerWidth > 768) return;
 
-  // All tooltip/popup elements to watch
-  const tooltips = [
-    document.getElementById('gcapTooltip'),
-    document.getElementById('tlTooltip'),
-  ];
-
   document.addEventListener('touchstart', e => {
-    tooltips.forEach(tt => {
-      if (!tt) return;
-      // If tooltip is visible and tap is outside it → hide
-      if (tt.classList.contains('show') && !tt.contains(e.target)) {
-        tt.classList.remove('show');
-      }
-    });
-
-    // Leaflet tooltips
-    document.querySelectorAll('.leaflet-tooltip').forEach(lt => {
-      if (!lt.contains(e.target) && !e.target.closest('.leaflet-marker-icon')) {
-        lt.style.display = 'none';
-        setTimeout(() => lt.style.display = '', 100);
-      }
-    });
-
-    // gcap-tooltip specifically
+    // gcap-tooltip: dismiss only if tapping outside both tooltip AND its trigger nodes
     const gcap = document.getElementById('gcapTooltip');
     if (gcap && gcap.classList.contains('show')) {
-      if (!gcap.contains(e.target) && !e.target.closest('.gcap-node')) {
-        gcap.classList.remove('show');
-      }
+      const onNode    = !!e.target.closest('.gcap-node');
+      const onTooltip = gcap.contains(e.target);
+      if (!onNode && !onTooltip) gcap.classList.remove('show');
     }
+
+    // timeline tooltip
+    const tl = document.getElementById('tlTooltip');
+    if (tl && tl.classList.contains('show') && !tl.contains(e.target)) {
+      tl.classList.remove('show');
+    }
+
+    // Leaflet map tooltips
+    document.querySelectorAll('.leaflet-tooltip').forEach(lt => {
+      if (!lt.contains(e.target) && !e.target.closest('.leaflet-marker-icon')) {
+        lt.style.opacity = '0';
+        setTimeout(() => lt.style.opacity = '', 200);
+      }
+    });
   }, { passive: true });
 })();

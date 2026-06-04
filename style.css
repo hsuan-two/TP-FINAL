@@ -2859,3 +2859,14 @@ body {
 }
 /* Desktop: hide mobile descs */
 @media (min-width: 769px) { .dynamo-mobile-descs { display: none; } }
+
+/* ── Mobile: market hero subtitle wrap ── */
+@media (max-width: 768px) {
+  .market-hero-sub {
+    white-space: normal;
+    text-align: center;
+    font-size: .78rem;
+    letter-spacing: .03em;
+    padding: 0 1rem;
+  }
+}
