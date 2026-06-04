@@ -309,6 +309,8 @@ body {
   border-radius: 14px;
   overflow: hidden;
   z-index: 0;
+  display: block;
+  box-sizing: border-box;
 }
 .leaflet-container { border-radius: 14px; }
 
@@ -2911,3 +2913,4 @@ body {
     overflow-x: auto;
   }
 }
+

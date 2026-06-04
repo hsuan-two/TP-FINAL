@@ -427,7 +427,7 @@
     const isMobile = window.innerWidth <= 768;
 
     const map = L.map('worldMap', {
-      center:[22,30], zoom:2,
+      center:[22, 30], zoom: 2,
       zoomControl: isMobile, scrollWheelZoom:false,
       dragging: isMobile, touchZoom: isMobile, doubleClickZoom:false,
       boxZoom:false, keyboard:false, attributionControl:false,
@@ -470,9 +470,14 @@
       }, 60);
     });
 
-    setTimeout(() => map.invalidateSize(), 200);
-    setTimeout(() => map.invalidateSize(), 600);
-    setTimeout(() => map.invalidateSize(), 1200);
+    setTimeout(() => {
+      // Fit map to show all markers with padding
+      const bounds = L.latLngBounds(SITES.map(s => [s.lat, s.lng]));
+      map.fitBounds(bounds, { padding: [40, 60], maxZoom: isMobile ? 3 : 4 });
+      setTimeout(() => map.invalidateSize(), 200);
+      setTimeout(() => map.invalidateSize(), 600);
+      setTimeout(() => map.invalidateSize(), 1200);
+    }, 100);
 
     // Use ResizeObserver for most reliable size fix
     if (window.ResizeObserver) {
