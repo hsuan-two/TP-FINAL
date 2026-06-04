@@ -252,6 +252,22 @@
         circle.setAttribute('r', R); circle.setAttribute('fill', navyFill); hideTip();
       });
 
+      // Touch: highlight on tap, reset on tap elsewhere
+      circle.addEventListener('touchstart', e => {
+        // Reset any previously highlighted circle
+        svg.querySelectorAll('circle[data-active="1"]').forEach(c => {
+          c.setAttribute('r', R);
+          c.setAttribute('fill', navyFill);
+          c.removeAttribute('data-active');
+        });
+        circle.setAttribute('r', R + 5);
+        circle.setAttribute('fill', '#1e88e5');
+        circle.setAttribute('data-active', '1');
+        showTip(e.touches[0], item);
+        e.stopPropagation();
+      }, { passive: true });
+
+
       svg.appendChild(circle);
       if (parts.length === 2) {
         svg.appendChild(makeSvgText(pt.x, pt.y - 7, parts[0], '11', '#fff'));
@@ -271,6 +287,21 @@
   document.getElementById('themeBtn')?.addEventListener('click', () => {
     setTimeout(drawTimeline, 50);
   });
+
+  // Mobile: reset highlighted circle when tapping outside the SVG
+  document.addEventListener('touchstart', e => {
+    const svg = document.getElementById('timelineSvg');
+    if (!svg) return;
+    if (!svg.contains(e.target)) {
+      const navyFill = getCSSVar('--navy') || '#0b2545';
+      svg.querySelectorAll('circle[data-active="1"]').forEach(c => {
+        c.setAttribute('r', '30');
+        c.setAttribute('fill', navyFill);
+        c.removeAttribute('data-active');
+      });
+      document.getElementById('tlTooltip')?.classList.remove('show');
+    }
+  }, { passive: true });
 
 })();
 
