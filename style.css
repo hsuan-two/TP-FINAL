@@ -2870,3 +2870,44 @@ body {
     padding: 0 1rem;
   }
 }
+
+/* ══ MOBILE: market-strategy full fix ══ */
+@media (max-width: 768px) {
+  #market-strategy .comp-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: static;
+  }
+  #market-strategy .comp-left {
+    position: static;
+    width: 100%;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  #market-strategy .comp-cards-wrap {
+    position: static;
+    width: 100%;
+  }
+  #market-strategy .comp-analysis-note {
+    position: static;
+    width: 100%;
+    margin: 0;
+  }
+  #market-strategy .comp-right {
+    position: static;
+    width: 100%;
+    flex: none;
+  }
+  #market-strategy .comp-chart-title {
+    display: block;
+    margin-bottom: .75rem;
+  }
+  #market-strategy .scatter-wrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+}
